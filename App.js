@@ -7,7 +7,10 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import AppNavigator from './navigation/AppNavigator';
+import TopBar from './topbar/TopBar';
 import store from './app/store';
+
+/* eslint-disable */
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
@@ -20,16 +23,20 @@ export default function App(props) {
         onFinish={() => handleFinishLoading(setLoadingComplete)}
       />
     );
-  } else {
-    return (
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+  }
+  return (
+    <View style={styles.container}>
+      {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+      <View style={{ flex: 1 }}>
+        <TopBar />
+      </View>
+      <View style={{ flex: 9 }}>
         <Provider store={store}>
           <AppNavigator />
         </Provider>
       </View>
-    );
-  }
+    </View>
+  );
 }
 
 async function loadResourcesAsync() {
@@ -43,7 +50,9 @@ async function loadResourcesAsync() {
       ...Ionicons.font,
       // We include SpaceMono because we use it in HomeScreen.js. Feel free to
       // remove this if you are not using it in your app
-      'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf')
+      'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+      Roboto: require('native-base/Fonts/Roboto.ttf'),
+      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf')
     })
   ]);
 }

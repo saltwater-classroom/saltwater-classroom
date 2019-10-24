@@ -1,14 +1,13 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import {
-  createStackNavigator,
-  createBottomTabNavigator
-} from 'react-navigation';
+import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
+import ExploreScreen from '../screens/Explore/ExploreScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+
+/* eslint-disable */
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -17,7 +16,7 @@ const config = Platform.select({
 
 const HomeStack = createStackNavigator(
   {
-    Home: HomeScreen
+    Home: ExploreScreen
   },
   config
 );
@@ -84,7 +83,7 @@ const tabNavigator = createBottomTabNavigator(
   },
   {
     tabBarOptions: {
-      showLabel: false,
+      showLabel: true,
       showIcon: true
     }
   }

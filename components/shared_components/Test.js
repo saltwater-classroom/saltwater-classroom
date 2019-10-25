@@ -11,16 +11,17 @@ import ProfileIcon from './ProfileIcon';
 export default function TestScreen() {
   return (
     <ScrollView>
-      <StyledText textType="head" text="head" fontColor="mediumOrange" />
-      <StyledText textType="subHead" text="subHead" />
-      <StyledText textType="subHead2" text="subhead2" />
-      <StyledText textType="subHead3" text="subHead3" />
-      <StyledText textType="body" text="body" />
+      <StyledText textType="head" text="head" fontColor="darkCyan" />
+      <StyledText textType="subHead" text="subHead" fontColor="greyCyan" />
+      <StyledText textType="subHead2" text="subhead2" fontColor="lightOrange" />
+      <StyledText textType="subHead3" text="subHead3" fontColor="mediumOrange" />
+      <StyledText textType="body" text="body" fontColor="darkOrange" />
 
       <TextInput placeHolderText="write something" />
 
-      <TextAreaInput placeHolderText="write something" />
-      <Tag placeHolderText="write something" />
+      <TextAreaInput placeHolderText="write something" rowNumber={3} />
+      <Tag text="tag1" />
+      <Tag text="tag2" outline={false} />
       <ProfileIcon icon="bear" />
 
       <StyledButton style={{ width: 200 }} text="hi" />

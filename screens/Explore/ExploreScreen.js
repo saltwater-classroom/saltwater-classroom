@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as Actions from '../../app/actions';
+import * as Actions from '../../app/actions/Explore/explore';
 
 import ExploreTabs from '../../components/Explore/ExploreTabs';
 
@@ -16,28 +16,20 @@ import ExploreTabs from '../../components/Explore/ExploreTabs';
 // />
 class ExploreScreen extends React.Component {
   componentDidMount() {
-    this.props.getData();
+    this.props.getUserExploreList();
   }
 
   render() {
     return (
-      <View>
-        <View style={styles.container}>
-          <Text>Explore Screen</Text>
-          <Text>{this.props.data.message}</Text>
-        </View>
-        <ExploreTabs />
+      <View style={{ flex: 1, height: 200 }}>
+        <ExploreTabs contacts={this.props.data} />
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {}
-});
-
 ExploreScreen.propTypes = {
-  getData: PropTypes.func.isRequired,
+  getUserExploreList: PropTypes.func.isRequired,
   data: PropTypes.any.isRequired
 };
 

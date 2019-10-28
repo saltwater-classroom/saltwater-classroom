@@ -1,42 +1,56 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, Alert, Image } from 'react-native';
-import { Button } from 'native-base';
-import Constants from 'expo-constants';
+import { ScrollView, FlatList, StyleSheet } from 'react-native';
+import ProfileView from '../shared_components/ProfileView';
+import ExploreListItem from './ExploreListItem';
+import ModalView from '../shared_components/ModalView';
 
-function Item({ name, bio }) {
-  return (
-    <View style={styles.item}>
-      <Image
-        source={{ uri: 'https://facebook.github.io/react/logo-og.png' }}
-        style={{ width: 40, height: 40 }}
-      />
-      <View style={styles.nameAndBio}>
-        <Text style={styles.title}>{name}</Text>
-        <Text numberOfLines={2}>{bio}</Text>
-      </View>
-      <Button style={styles.button} onPress={() => Alert.alert('Simple Button pressed')}>
-        <Text>Send Mail</Text>
-      </Button>
-    </View>
-  );
-}
+export default class ExploreList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isModalVisible: false,
+      view: null
+    };
+  }
 
-Item.propTypes = {
-  name: PropTypes.string.isRequired,
-  bio: PropTypes.string.isRequired
-};
+  onPressItem = item => {
+    this.showModal(item);
+    this.setState({
+      view: <ProfileView name={item.name} bio={item.bio} />
+    });
+  };
 
-export default function ExploreList(props) {
-  return (
-    <SafeAreaView style={styles.container}>
-      <FlatList
-        data={props.contacts}
-        renderItem={({ item }) => <Item name={item.name} bio={item.bio} />}
-        keyExtractor={item => item.id}
-      />
-    </SafeAreaView>
-  );
+  hideMyModal = () => {
+    this.setState({ isModalVisible: false });
+  };
+
+  showModal = () => this.setState({ isModalVisible: true });
+
+  render() {
+    return (
+      <ScrollView style={styles.container}>
+        <FlatList
+          data={this.props.contacts}
+          renderItem={({ item }) => (
+            <ExploreListItem
+              name={item.name}
+              bio={item.bio}
+              onPressItem={() => this.onPressItem(item)}
+            />
+          )}
+          keyExtractor={item => item.id}
+        />
+        {this.state.isModalVisible && (
+          <ModalView
+            view={this.state.view}
+            modalVisible={this.state.isModalVisible}
+            hideModal={this.hideMyModal}
+          />
+        )}
+      </ScrollView>
+    );
+  }
 }
 
 ExploreList.propTypes = {
@@ -52,11 +66,10 @@ ExploreList.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginTop: Constants.statusBarHeight
+    flex: 1
   },
   item: {
-    borderColor: '#f9c2ff',
+    borderColor: '#eaa43a',
     borderWidth: 1,
     padding: 20,
     marginVertical: 8,
@@ -71,14 +84,6 @@ const styles = StyleSheet.create({
     flex: 2,
     paddingLeft: 20,
     paddingRight: 20
-  },
-  title: {
-    fontSize: 24
-  },
-  button: {
-    flex: 1,
-    backgroundColor: 'skyblue',
-    justifyContent: 'center'
   },
   profile: {
     width: 40,

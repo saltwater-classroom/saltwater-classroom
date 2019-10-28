@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
@@ -27,7 +28,7 @@ export default function App(props) {
   return (
     <View style={styles.container}>
       {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1.5 }}>
         <TopBar />
       </View>
       <View style={{ flex: 9 }}>
@@ -43,7 +44,8 @@ async function loadResourcesAsync() {
   await Promise.all([
     Asset.loadAsync([
       require('./assets/images/robot-dev.png'),
-      require('./assets/images/robot-prod.png')
+      require('./assets/images/robot-prod.png'),
+      require('./assets/images/user.png')
     ]),
     Font.loadAsync({
       // This is the font that we are using for our tab bar

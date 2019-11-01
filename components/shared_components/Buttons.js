@@ -7,15 +7,15 @@ import { baseColorNames, baseColors } from './Colors';
 
 export class StyledButton extends React.Component {
   render() {
-    const { text, style, padding, background, fontColor } = this.props;
+    const { text, style, padding, background, fontColor, onPress } = this.props;
     const paddingStyle = padding || buttonStyle.padding;
     const buttonColor = { backgroundColor: baseColors[background] };
     const textColor = { color: baseColors[fontColor] };
 
     return (
       <Content style={paddingStyle}>
-        <Button style={[buttonStyle.base, buttonColor, style]}>
-          <Text style={textColor}>{text}</Text>
+        <Button style={[buttonStyle.base, buttonColor, style]} onPress={onPress}>
+          <Text style={[textColor]}>{text}</Text>
         </Button>
       </Content>
     );
@@ -35,13 +35,14 @@ StyledButton.propTypes = {
   style: PropTypes.object,
   padding: PropTypes.object,
   background: PropTypes.oneOf(baseColorNames),
-  fontColor: PropTypes.oneOf(baseColorNames)
+  fontColor: PropTypes.oneOf(baseColorNames),
+  onPress: PropTypes.func.isRequired
 };
 
 const buttonStyle = StyleSheet.create({
   base: {
-    width: 100,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   padding: {
     padding: 10

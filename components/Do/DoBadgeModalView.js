@@ -35,12 +35,16 @@ export default class DoBadgeModalView extends React.Component {
   }
 }
 
+DoBadgeModalView.defaultProps = {
+  onPressItem: undefined
+};
+
 DoBadgeModalView.propTypes = {
   name: PropTypes.string.isRequired,
   percent: PropTypes.number.isRequired,
   inspirationalMessage: PropTypes.string.isRequired,
   goalMessage: PropTypes.string.isRequired,
-  onPressItem: PropTypes.func.isRequired
+  onPressItem: PropTypes.func
 };
 
 const styles = StyleSheet.create({

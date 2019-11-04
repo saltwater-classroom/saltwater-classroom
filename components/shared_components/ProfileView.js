@@ -12,12 +12,12 @@ export default class ProfileView extends Component {
 
     return (
       <View style={styles.container}>
-        <StyledText textType="head" text={name} fontColor="darkBase" style={styles.spacing} />
+        <StyledText textType="head" text={name} fontColor="oceanFloor" style={styles.spacing} />
         <Image
           source={require('../../assets/images/user.png')}
           style={[{ width: 100, height: 100 }, styles.spacing]}
         />
-        <StyledText style={styles.spacing} textType="body" text={bio} fontColor="greyCyan" />
+        <StyledText style={styles.spacing} textType="body" text={bio} fontColor="smoothSailing" />
       </View>
     );
   }

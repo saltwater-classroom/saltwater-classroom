@@ -4,7 +4,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import ExploreScreen from '../screens/Explore/ExploreScreen';
-import LinksScreen from '../screens/LinksScreen';
+import DoScreen from '../screens/Do/DoScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 /* eslint-disable */
@@ -37,15 +37,15 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
-const LinksStack = createStackNavigator(
+const DoStack = createStackNavigator(
   {
-    Links: LinksScreen
+    Do: DoScreen
   },
   config
 );
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+DoStack.navigationOptions = {
+  tabBarLabel: 'Do',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -54,7 +54,7 @@ LinksStack.navigationOptions = {
   )
 };
 
-LinksStack.path = '';
+DoStack.path = '';
 
 const SettingsStack = createStackNavigator(
   {
@@ -77,8 +77,8 @@ SettingsStack.path = '';
 
 const tabNavigator = createBottomTabNavigator(
   {
+    DoStack,
     HomeStack,
-    LinksStack,
     SettingsStack
   },
   {

@@ -1,0 +1,22 @@
+[
+  {
+    "badge_id": 1,
+    "mission_id": 1
+  },
+  {
+    "badge_id": 2,
+    "mission_id": 2
+  },
+  {
+    "badge_id": 3,
+    "mission_id": 3
+  },
+  {
+    "badge_id": 4,
+    "mission_id": 4
+  },
+  {
+    "badge_id": 1,
+    "mission_id": 4
+  }
+]

@@ -15,11 +15,11 @@ StyledText.defaultProps = {
   textType: 'body',
   style: { color: 'black' },
   text: 'replace me',
-  fontColor: 'darkBase'
+  fontColor: 'oceanFloor'
 };
 
 StyledText.propTypes = {
-  textType: PropTypes.oneOf(['head', 'subHead', 'subHead2', 'subHead3', 'body']),
+  textType: PropTypes.oneOf(['head', 'subHead', 'subHead2', 'subHead3', 'body', 'bodyBold']),
   style: PropTypes.object,
   text: PropTypes.string,
   fontColor: PropTypes.oneOf(baseColorNames)
@@ -38,35 +38,42 @@ function checkTextType(type) {
       return textType.subHead3;
     case 'body':
       return textType.body;
+    case 'bodyBold':
+      return textType.bodyBold;
     default:
       return textType.body;
   }
 }
 
-const textType = StyleSheet.create({
+export const textType = StyleSheet.create({
   head: {
     fontSize: 30,
-    fontWeight: 'bold',
-    lineHeight: 35
+    lineHeight: 35,
+    fontFamily: 'nunito-sans-bold'
   },
   subHead: {
     fontSize: 24,
-    fontWeight: 'bold',
-    lineHeight: 28
+    lineHeight: 28,
+    fontFamily: 'nunito-sans-regular'
   },
   subHead2: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily: 'zilla-slab-italic',
     lineHeight: 23
   },
   subHead3: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    lineHeight: 21
+    fontSize: 24,
+    fontFamily: 'zilla-slab-italic',
+    lineHeight: 30
   },
   body: {
     fontSize: 18,
-    fontWeight: 'normal',
+    fontFamily: 'nunito-sans-regular',
+    lineHeight: 21
+  },
+  bodyBold: {
+    fontSize: 16,
+    fontFamily: 'nunito-sans-bold',
     lineHeight: 21
   }
 });

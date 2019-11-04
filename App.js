@@ -4,7 +4,13 @@ import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import React, { useState } from 'react';
 import { Provider } from 'react-redux';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import {
+  Platform,
+  StatusBar,
+  StyleSheet,
+  View,
+  SafeAreaView
+} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import AppNavigator from './navigation/AppNavigator';
@@ -26,7 +32,7 @@ export default function App(props) {
     );
   }
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
       <View style={{ flex: 1.5 }}>
         <TopBar />
@@ -36,7 +42,7 @@ export default function App(props) {
           <AppNavigator />
         </Provider>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -54,7 +60,10 @@ async function loadResourcesAsync() {
       // remove this if you are not using it in your app
       'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
       Roboto: require('native-base/Fonts/Roboto.ttf'),
-      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf')
+      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+      'nunito-sans-regular': require('./assets/fonts/NunitoSans-Regular.ttf'),
+      'nunito-sans-bold': require('./assets/fonts/NunitoSans-Bold.ttf'),
+      'zilla-slab-italic': require('./assets/fonts/ZillaSlab-Italic.ttf')
     })
   ]);
 }

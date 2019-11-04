@@ -43,8 +43,8 @@ ExploreScreen.navigationOptions = {
 // eslint-disable-next-line no-unused-vars
 function mapStateToProps(state, props) {
   return {
-    loading: state.dataReducer.loading,
-    data: state.dataReducer.data
+    loading: state.exploreScreen.loading,
+    data: state.exploreScreen.data
   };
 }
 

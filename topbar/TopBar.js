@@ -24,7 +24,7 @@ export default class TopBar extends Component {
     const view = <ProfileView name="Anika J." bio="Pineapples are my favorite fruit" />;
     return (
       <View style={styles.header}>
-        <StyledText textType="head" text="saltwater classroom" fontColor="darkCyan" />
+        <StyledText textType="head" text="saltwater classroom" fontColor="tidepool" />
 
         <TouchableOpacity
           onPress={() => {

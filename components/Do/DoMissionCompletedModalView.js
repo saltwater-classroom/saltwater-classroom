@@ -9,6 +9,8 @@ import * as Actions from '../../app/actions/Do/do';
 import StyledText from '../shared_components/Typography';
 import BadgeProgress from '../shared_components/BadgeProgress';
 
+const updatedBadgeMessage = 'You just got one step closer to earning';
+
 export class DoMissionCompletedModalView extends React.Component {
   componentDidMount() {
     this.props.getBadgeFromMission(this.props.id);
@@ -19,8 +21,8 @@ export class DoMissionCompletedModalView extends React.Component {
     const percentage = updatedBadge ? updatedBadge.percent : 0;
     const titleMessage = `${name} completed!`;
     const badgeProgressMessage = updatedBadge
-      ? `You just got one step closer to earning the ${updatedBadge.name} badge.`
-      : 'You just got one step closer to earning a badge.';
+      ? `${updatedBadgeMessage}${updatedBadge.name} badge.`
+      : `${updatedBadgeMessage}a badge.`;
 
     return (
       <ScrollView style={styles.item}>

@@ -31,19 +31,17 @@ const fields = [
 export default class DoMissionList extends React.Component {
   constructor(props) {
     super(props);
+    const defaultItem = { name: 'name', id: '2' };
     this.state = {
       isMissionModalVisible: false,
       isMissionCompletedModalVisible: false,
-      view: null,
-      missionCompletedView: null,
-      selectedItem: null
+      selectedItem: defaultItem
     };
   }
 
   onPressMissionItem = item => {
     this.showModal(item);
     this.setState({
-      view: this.createMissionModalView(item),
       selectedItem: item
     });
   };
@@ -53,30 +51,12 @@ export default class DoMissionList extends React.Component {
       isMissionModalVisible: !prevState.isMissionModalVisible
     }));
 
-    const { selectedItem } = this.state;
-
     // for some reason, ios needs this timer. Otherwise, this modal doesn't pop up :(
     setTimeout(() => {
       this.setState(prevState => ({
-        isMissionCompletedModalVisible: !prevState.isMissionCompletedModalVisible,
-        missionCompletedView: this.createMissionCompletedView(selectedItem)
+        isMissionCompletedModalVisible: !prevState.isMissionCompletedModalVisible
       }));
     }, 500);
-  };
-
-  createMissionModalView = item => {
-    return (
-      <DoMissionModalView
-        name={item.name}
-        description="this is the description"
-        fields={fields}
-        openNextModal={this.onPressMissionSubmit}
-      />
-    );
-  };
-
-  createMissionCompletedView = item => {
-    return <DoMissionCompletedModalView id={item.id} name={item.name} />;
   };
 
   hideMissionModal = () => {
@@ -96,6 +76,20 @@ export default class DoMissionList extends React.Component {
   showMissionCompleteModal = () => this.setState({ isMissionCompletedModalVisible: true });
 
   render() {
+    const { selectedItem } = this.state;
+
+    const doMissionModalView = (
+      <DoMissionModalView
+        name={selectedItem.name}
+        description="this is the description"
+        fields={fields}
+        openNextModal={this.onPressMissionSubmit}
+      />
+    );
+
+    const doMissionCompletedModalView = (
+      <DoMissionCompletedModalView id={selectedItem.id} name={selectedItem.name} />
+    );
     return (
       <ScrollView style={styles.container}>
         <FlatList
@@ -107,7 +101,7 @@ export default class DoMissionList extends React.Component {
         />
         {this.state.isMissionModalVisible && (
           <ModalView
-            view={this.state.view}
+            view={doMissionModalView}
             modalVisible={this.state.isMissionModalVisible}
             hideModal={this.hideMissionModal}
           />
@@ -115,7 +109,7 @@ export default class DoMissionList extends React.Component {
 
         {this.state.isMissionCompletedModalVisible && (
           <ModalView
-            view={this.state.missionCompletedView}
+            view={doMissionCompletedModalView}
             modalVisible={this.state.isMissionCompletedModalVisible}
             hideModal={this.hideMissionCompletedModal}
           />

@@ -11,11 +11,11 @@ import ProfileIcon from './ProfileIcon';
 export default function TestScreen() {
   return (
     <ScrollView>
-      <StyledText textType="head" text="head" fontColor="darkCyan" />
-      <StyledText textType="subHead" text="subHead" fontColor="greyCyan" />
-      <StyledText textType="subHead2" text="subhead2" fontColor="lightOrange" />
-      <StyledText textType="subHead3" text="subHead3" fontColor="mediumOrange" />
-      <StyledText textType="body" text="body" fontColor="darkOrange" />
+      <StyledText textType="head" text="head" fontColor="tidepool" />
+      <StyledText textType="subHead" text="subHead" fontColor="smoothSailing" />
+      <StyledText textType="subHead2" text="subhead2" fontColor="goldStar" />
+      <StyledText textType="subHead3" text="subHead3" fontColor="pencil" />
+      <StyledText textType="body" text="body" fontColor="coralReef" />
 
       <TextInput placeHolderText="write something" />
 

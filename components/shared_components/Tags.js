@@ -18,13 +18,13 @@ export default class Tag extends React.Component {
       : { backgroundColor: baseColors[background] };
 
     // if fontcolor is given, use that. Else, determine if it is in outline.
-    // default color for outlined tag is darkBase.  default for filled tag is lightBase.
+    // default color for outlined tag is oceanFloor.  default for filled tag is whiteSands.
     // eslint-disable-next-line no-nested-ternary
     const textColor = fontColor
       ? { color: baseColors[fontColor] }
       : outline
-      ? { color: baseColors.darkBase }
-      : { color: baseColors.lightBase };
+      ? { color: baseColors.oceanFloor }
+      : { color: baseColors.whiteSands };
 
     return (
       <Content style={styleContainer}>
@@ -41,7 +41,7 @@ Tag.defaultProps = {
   style: undefined,
   containerStyle: undefined,
   outline: true,
-  background: 'darkBase',
+  background: 'oceanFloor',
   fontColor: undefined
 };
 

@@ -1,16 +1,4 @@
 export const DATA_AVAILABLE = 'DATA_AVAILABLE';
-
-//Import the sample data
-import Data from '../mocks/example/sample';
-
-export function getData() {
-  return dispatch => {
-    //Make API Call
-    //For this example, I will be using the sample data in the json file
-    //delay the retrieval [Sample reasons only]
-    setTimeout(() => {
-      const data = Data;
-      dispatch({ type: DATA_AVAILABLE, data: data });
-    }, 2000);
-  };
-}
+export const MISSION_LIST = 'MISSION_LIST';
+export const BADGES_LIST = 'BADGES_LIST';
+export const GET_BADGE_FROM_MISSION = 'GET_BADGE_FROM_MISSION';

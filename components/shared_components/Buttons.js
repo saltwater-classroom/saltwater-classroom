@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet } from 'react-native';
-import { Button, Text, Content } from 'native-base';
+import { StyleSheet, View } from 'react-native';
+import { Button, Text } from 'native-base';
 
 import { baseColorNames, baseColors } from './Colors';
 
@@ -13,11 +13,11 @@ export class StyledButton extends React.Component {
     const textColor = { color: baseColors[fontColor] };
 
     return (
-      <Content style={paddingStyle}>
+      <View style={paddingStyle}>
         <Button style={[buttonStyle.base, buttonColor, style]} onPress={onPress}>
-          <Text style={[textColor]}>{text}</Text>
+          <Text style={[textColor, { textAlign: 'center', alignSelf: 'center' }]}>{text}</Text>
         </Button>
-      </Content>
+      </View>
     );
   }
 }
@@ -26,8 +26,8 @@ StyledButton.defaultProps = {
   text: 'click',
   style: undefined,
   padding: undefined,
-  background: 'darkCyan',
-  fontColor: 'lightBase'
+  background: 'tidepool',
+  fontColor: 'whiteSands'
 };
 
 StyledButton.propTypes = {
@@ -42,7 +42,10 @@ StyledButton.propTypes = {
 const buttonStyle = StyleSheet.create({
   base: {
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    alignContent: 'center',
+    textAlign: 'center',
+    flex: 1
   },
   padding: {
     padding: 10

@@ -1,11 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  Linking
-} from 'react-native';
+import { ScrollView, StyleSheet, TouchableOpacity, Linking } from 'react-native';
 import { WebView } from 'react-native-webview';
 
 import FormGenerator from '../shared_components/FormGenerator';
@@ -18,18 +13,12 @@ export default class NewsModalView extends React.Component {
     const { title, url, fields } = this.props;
     return (
       <ScrollView style={styles.item}>
-        <StyledText
-          textType="subHead2"
-          text={title}
-          fontColor="tidepool"
-          style={styles.spacing}
-        />
+        <StyledText textType="subHead2" text={title} fontColor="tidepool" style={styles.spacing} />
         <TouchableOpacity
           style={styles.photo}
           onPress={() => {
             Linking.openURL(url);
-          }}
-        >
+          }}>
           <LinkPreviewItem uri={url} />
         </TouchableOpacity>
 

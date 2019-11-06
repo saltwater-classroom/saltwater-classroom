@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
-import {
-  Container,
-  Header,
-  Item,
-  Input,
-  Icon,
-  Button,
-  Text
-} from 'native-base';
+import { Container, Header, Item, Input, Icon, Button, Text } from 'native-base';
 
 export default class SearchBar extends Component {
   render() {

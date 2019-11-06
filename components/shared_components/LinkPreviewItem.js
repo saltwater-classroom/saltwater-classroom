@@ -22,12 +22,10 @@ export default class LinkPreviewItem extends React.Component {
     // }, 10000);
 
     try {
-      const { title, images, url, mediaType } = await LinkPreview.getPreview(
-        uri
-      );
+      const { title, images, url, mediaType } = await LinkPreview.getPreview(uri);
 
       await this.setState({
-        title: title,
+        title,
         image_url: images[0],
         link: url,
         link_type: mediaType,
@@ -43,10 +41,7 @@ export default class LinkPreviewItem extends React.Component {
 
     return (
       <View style={styles.item}>
-        <Image
-          style={{ width: this.props.width, height: 100 }}
-          source={{ uri: image_url }}
-        />
+        <Image style={{ width: this.props.width, height: 100 }} source={{ uri: image_url }} />
       </View>
     );
   }

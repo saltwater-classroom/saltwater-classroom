@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, ScrollView } from 'react-native';
-import {
-  Container,
-  Header,
-  Item,
-  Input,
-  Icon,
-  Button,
-  Text
-} from 'native-base';
+import { Container, Header, Item, Input, Icon, Button, Text } from 'native-base';
 
 import SearchBar from '../shared_components/SearchBar';
 import LearnDidYouKnow from './LearnDidYouKnow';

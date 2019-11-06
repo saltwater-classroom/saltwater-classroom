@@ -1,11 +1,7 @@
 import { combineReducers } from 'redux';
 
 import { DATA_AVAILABLE } from '../actions/Explore/explore'; // Import the actions types constant we defined in our actions
-import {
-  MISSION_LIST,
-  BADGES_LIST,
-  GET_BADGE_FROM_MISSION
-} from '../actions/Do/do';
+import { MISSION_LIST, BADGES_LIST, GET_BADGE_FROM_MISSION } from '../actions/Do/do';
 import { GET_NEW_CONTENT } from '../actions/Learn/learn';
 
 const dataState = { data: [], loading: true };

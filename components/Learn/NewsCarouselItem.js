@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
-import {
-  Container,
-  Header,
-  Item,
-  Input,
-  Icon,
-  Button,
-  Text
-} from 'native-base';
+import { Container, Header, Item, Input, Icon, Button, Text } from 'native-base';
 
 import ModalView from '../shared_components/ModalView';
 import LinkPreviewItem from '../shared_components/LinkPreviewItem';

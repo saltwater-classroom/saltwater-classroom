@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, Dimensions } from 'react-native';
-import {
-  Container,
-  Header,
-  Item,
-  Input,
-  Icon,
-  Button,
-  Text
-} from 'native-base';
+import { Container, Header, Item, Input, Icon, Button, Text } from 'native-base';
 
+import Carousel from 'react-native-snap-carousel';
 import StyledText from '../shared_components/Typography';
 import { lightColors } from '../shared_components/Colors';
-import Carousel from 'react-native-snap-carousel';
 
 import NewsCarouselItem from './NewsCarouselItem';
 
@@ -24,11 +16,7 @@ export default class LearnCarousel extends Component {
     return (
       <View>
         <Text>{item.title}</Text>
-        <NewsCarouselItem
-          width={deviceWidth / 2}
-          title={item.title}
-          url={item.url}
-        />
+        <NewsCarouselItem width={deviceWidth / 2} title={item.title} url={item.url} />
       </View>
     );
   }
@@ -45,7 +33,7 @@ export default class LearnCarousel extends Component {
           renderItem={this._renderItem}
           sliderWidth={deviceWidth - 40}
           itemWidth={deviceWidth / 2}
-          activeSlideAlignment={'start'}
+          activeSlideAlignment="start"
         />
       </View>
     );

@@ -3,3 +3,6 @@ export const MISSION_LIST = 'MISSION_LIST';
 export const BADGES_LIST = 'BADGES_LIST';
 export const GET_BADGE_FROM_MISSION = 'GET_BADGE_FROM_MISSION';
 export const GET_NEW_CONTENT = 'GET_NEW_CONTENT';
+export const GET_DID_YOU_KNOW = 'GET_DID_YOU_KNOW';
+export const GET_NEWS_AND_EVENTS = 'GET_NEWS_AND_EVENTS';
+export const GET_VIDEOS = 'GET_VIDEOS';

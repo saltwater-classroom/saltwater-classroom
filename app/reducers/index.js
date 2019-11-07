@@ -2,7 +2,12 @@ import { combineReducers } from 'redux';
 
 import { DATA_AVAILABLE } from '../actions/Explore/explore'; // Import the actions types constant we defined in our actions
 import { MISSION_LIST, BADGES_LIST, GET_BADGE_FROM_MISSION } from '../actions/Do/do';
-import { GET_NEW_CONTENT } from '../actions/Learn/learn';
+import {
+  GET_NEW_CONTENT,
+  GET_DID_YOU_KNOW,
+  GET_NEWS_AND_EVENTS,
+  GET_VIDEOS
+} from '../actions/Learn/learn';
 
 const dataState = { data: [], loading: true };
 const initialDoScreenState = {
@@ -14,6 +19,9 @@ const initialDoScreenState = {
 
 const initialLearnScreenState = {
   newContent: [],
+  newsAndEvents: [],
+  videos: [],
+  didYouKnow: { fact: 'fact' },
   loading: true
 };
 
@@ -44,6 +52,12 @@ const learnScreenReducer = (state = initialLearnScreenState, action) => {
   switch (action.type) {
     case GET_NEW_CONTENT:
       return { ...state, newContent: action.data, loading: false };
+    case GET_DID_YOU_KNOW:
+      return { ...state, didYouKnow: action.data, loading: false };
+    case GET_NEWS_AND_EVENTS:
+      return { ...state, newsAndEvents: action.data, loading: false };
+    case GET_VIDEOS:
+      return { ...state, videos: action.data, loading: false };
     default:
       return state;
   }

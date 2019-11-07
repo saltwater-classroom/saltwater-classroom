@@ -1,32 +1,27 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, ScrollView } from 'react-native';
-import { Container, Header, Item, Input, Icon, Button, Text } from 'native-base';
+import { ScrollView } from 'react-native';
 
-import SearchBar from '../shared_components/SearchBar';
 import LearnDidYouKnow from './LearnDidYouKnow';
 import LearnCarousel from './LearnCarousel';
 
 export default class LearnFeed extends Component {
   render() {
+    const { didYouKnow, newContent, newsAndEvents, videos } = this.props;
     return (
       <ScrollView>
-        <LearnDidYouKnow />
-        <LearnCarousel content={this.props.content} />
+        <LearnDidYouKnow fact={didYouKnow} />
+        <LearnCarousel content={newContent} carouselTitle="New!" />
+        <LearnCarousel content={newsAndEvents} carouselTitle="News and Current Events" />
+        <LearnCarousel content={videos} carouselTitle="Videos" />
       </ScrollView>
     );
   }
 }
 
 LearnFeed.propTypes = {
-  content: PropTypes.array.isRequired
+  newContent: PropTypes.array.isRequired,
+  newsAndEvents: PropTypes.array.isRequired,
+  videos: PropTypes.array.isRequired,
+  didYouKnow: PropTypes.object.isRequired
 };
-
-const styles = StyleSheet.create({
-  container: {
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignContent: 'center'
-  }
-});

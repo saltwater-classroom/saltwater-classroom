@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, Dimensions } from 'react-native';
-import { Container, Header, Item, Input, Icon, Button, Text } from 'native-base';
 
 import Carousel from 'react-native-snap-carousel';
 import StyledText from '../shared_components/Typography';
 import { lightColors } from '../shared_components/Colors';
 
-import NewsCarouselItem from './NewsCarouselItem';
+import MediaCarouselItem from './MediaCarouselItem';
 
 const deviceWidth = Dimensions.get('window').width;
 
 export default class LearnCarousel extends Component {
-  _renderItem({ item, index }) {
+  renderItem({ item }) {
     return (
       <View>
-        <Text>{item.title}</Text>
-        <NewsCarouselItem width={deviceWidth / 2} title={item.title} url={item.url} />
+        <MediaCarouselItem
+          width={deviceWidth / 2}
+          title={item.title}
+          url={item.url}
+          type={item.type}
+        />
       </View>
     );
   }
@@ -24,13 +27,13 @@ export default class LearnCarousel extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <StyledText textType="subHead2" text="New" fontColor="tidepool" />
+        <StyledText textType="subHead2" text={this.props.carouselTitle} fontColor="tidepool" />
         <Carousel
           ref={c => {
-            this._carousel = c;
+            this.carousel = c;
           }}
           data={this.props.content}
-          renderItem={this._renderItem}
+          renderItem={this.renderItem}
           sliderWidth={deviceWidth - 40}
           itemWidth={deviceWidth / 2}
           activeSlideAlignment="start"
@@ -41,7 +44,8 @@ export default class LearnCarousel extends Component {
 }
 
 LearnCarousel.propTypes = {
-  content: PropTypes.array.isRequired
+  content: PropTypes.array.isRequired,
+  carouselTitle: PropTypes.string.isRequired
 };
 
 const styles = StyleSheet.create({

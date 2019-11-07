@@ -13,18 +13,36 @@ import * as Actions from '../../app/actions/Learn/learn';
 class LearnScreen extends React.Component {
   componentDidMount() {
     this.props.getNewContent();
+    this.props.getDidYouKnow();
+    this.props.getNewsAndEvents();
+    this.props.getVideos();
   }
 
   render() {
+    const { newContent, newsAndEvents, videos, didYouKnow } = this.props;
     return (
       <View style={{ flex: 1 }}>
-        <LearnFeed content={this.props.newContent} />
+        <LearnFeed
+          newContent={newContent}
+          newsAndEvents={newsAndEvents}
+          videos={videos}
+          didYouKnow={didYouKnow}
+        />
       </View>
     );
   }
 }
 
-LearnScreen.propTypes = {};
+LearnScreen.propTypes = {
+  getNewContent: PropTypes.func.isRequired,
+  getDidYouKnow: PropTypes.func.isRequired,
+  getNewsAndEvents: PropTypes.func.isRequired,
+  getVideos: PropTypes.func.isRequired,
+  newContent: PropTypes.array.isRequired,
+  didYouKnow: PropTypes.object.isRequired,
+  newsAndEvents: PropTypes.array.isRequired,
+  videos: PropTypes.array.isRequired
+};
 
 LearnScreen.navigationOptions = {
   header: null
@@ -37,7 +55,10 @@ LearnScreen.navigationOptions = {
 function mapStateToProps(state, props) {
   return {
     loading: state.learnScreen.loading,
-    newContent: state.learnScreen.newContent
+    newContent: state.learnScreen.newContent,
+    didYouKnow: state.learnScreen.didYouKnow,
+    newsAndEvents: state.learnScreen.newsAndEvents,
+    videos: state.learnScreen.videos
   };
 }
 

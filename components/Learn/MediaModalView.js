@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ScrollView, StyleSheet, TouchableOpacity, Linking } from 'react-native';
-import { WebView } from 'react-native-webview';
 
 import FormGenerator from '../shared_components/FormGenerator';
 
 import StyledText from '../shared_components/Typography';
 import LinkPreviewItem from '../shared_components/LinkPreviewItem';
 
-export default class NewsModalView extends React.Component {
+export default class MediaModalView extends React.Component {
   render() {
     const { title, url, fields } = this.props;
     return (
@@ -19,16 +18,16 @@ export default class NewsModalView extends React.Component {
           onPress={() => {
             Linking.openURL(url);
           }}>
-          <LinkPreviewItem uri={url} />
+          <LinkPreviewItem uri={url} width={400} />
         </TouchableOpacity>
 
-        <FormGenerator fields={fields} onSubmit={this.props.openNextModal} />
+        <FormGenerator fields={fields} onSubmit={() => console.log('clicked')} />
       </ScrollView>
     );
   }
 }
 
-NewsModalView.propTypes = {
+MediaModalView.propTypes = {
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   fields: PropTypes.array.isRequired

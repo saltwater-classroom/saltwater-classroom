@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
 import { ScrollView, FlatList, StyleSheet } from 'react-native';
 import DoMissionListItem from './DoMissionListItem';
 import ModalView from '../shared_components/ModalView';
 import DoMissionModalView from './DoMissionModalView';
 import DoMissionCompletedModalView from './DoMissionCompletedModalView';
+import * as Actions from '../../app/actions/Do/do';
 
 // These Fields will create a login form with three fields
 const fields = [
@@ -28,7 +32,7 @@ const fields = [
   }
 ];
 
-export default class DoMissionList extends React.Component {
+export class DoMissionList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,6 +46,8 @@ export default class DoMissionList extends React.Component {
 
   onPressMissionItem = item => {
     this.showModal(item);
+    this.props.getBadgeFromMission(item.id);
+
     this.setState({
       view: this.createMissionModalView(item),
       selectedItem: item
@@ -76,7 +82,10 @@ export default class DoMissionList extends React.Component {
   };
 
   createMissionCompletedView = item => {
-    return <DoMissionCompletedModalView id={item.id} name={item.name} />;
+    const titleMessage = `${item.name} completed!`;
+    return (
+      <DoMissionCompletedModalView title={titleMessage} updatedBadge={this.props.updatedBadge} />
+    );
   };
 
   hideMissionModal = () => {
@@ -131,7 +140,9 @@ DoMissionList.propTypes = {
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  getBadgeFromMission: PropTypes.func.isRequired,
+  updatedBadge: PropTypes.object.isRequired
 };
 
 const styles = StyleSheet.create({
@@ -140,3 +151,25 @@ const styles = StyleSheet.create({
     marginTop: 20
   }
 });
+
+// eslint-disable-next-line no-unused-vars
+function mapStateToProps(state, props) {
+  return {
+    loading: state.doScreen.loading,
+    updatedBadge: state.doScreen.updatedBadge
+  };
+}
+
+// Doing this merges our actions into the component’s props,
+// while wrapping them in dispatch() so that they immediately dispatch an Action.
+// Just by doing this, we will have access to the actions defined in out actions
+// file (action/home.js)
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(Actions, dispatch);
+}
+
+// Connect everything
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DoMissionList);

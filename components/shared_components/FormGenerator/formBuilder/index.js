@@ -420,7 +420,7 @@ export default class FormBuilder extends Component {
     return (
       <KeyboardAwareScrollView
         keyboardShouldPersistTaps="always"
-        extraScrollHeight={20}
+        extraHeight={-30}
         enableAutomaticScroll={false}
         {...this.props.scrollViewProps}
       >

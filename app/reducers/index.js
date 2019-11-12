@@ -6,7 +6,10 @@ import {
   GET_NEW_CONTENT,
   GET_DID_YOU_KNOW,
   GET_NEWS_AND_EVENTS,
-  GET_VIDEOS
+  GET_VIDEOS,
+  GET_BADGE_FROM_LEARN,
+  GET_SPECIES_PROFILES,
+  GET_SPECIES_PROFILE_FROM_ID
 } from '../actions/Learn/learn';
 
 const dataState = { data: [], loading: true };
@@ -21,6 +24,9 @@ const initialLearnScreenState = {
   newContent: [],
   newsAndEvents: [],
   videos: [],
+  speciesProfiles: [],
+  updatedBadge: undefined,
+  currentSpeciesProfile: undefined,
   didYouKnow: { fact: 'fact' },
   loading: true
 };
@@ -58,6 +64,13 @@ const learnScreenReducer = (state = initialLearnScreenState, action) => {
       return { ...state, newsAndEvents: action.data, loading: false };
     case GET_VIDEOS:
       return { ...state, videos: action.data, loading: false };
+    case GET_BADGE_FROM_LEARN:
+      return { ...state, updatedBadge: action.data, loading: false };
+    case GET_SPECIES_PROFILES:
+      return { ...state, speciesProfiles: action.data, loading: false };
+    case GET_SPECIES_PROFILE_FROM_ID:
+      console.log(`here${action}`);
+      return { ...state, currentSpeciesProfile: action.data, loading: false };
     default:
       return state;
   }

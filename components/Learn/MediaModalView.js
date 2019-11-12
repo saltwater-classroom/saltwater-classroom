@@ -9,7 +9,7 @@ import LinkPreviewItem from '../shared_components/LinkPreviewItem';
 
 export default class MediaModalView extends React.Component {
   render() {
-    const { title, url, fields } = this.props;
+    const { title, url, fields, onSubmit } = this.props;
     return (
       <ScrollView style={styles.item}>
         <StyledText textType="subHead2" text={title} fontColor="tidepool" style={styles.spacing} />
@@ -21,7 +21,7 @@ export default class MediaModalView extends React.Component {
           <LinkPreviewItem uri={url} width={400} />
         </TouchableOpacity>
 
-        <FormGenerator fields={fields} onSubmit={() => console.log('clicked')} />
+        <FormGenerator fields={fields} onSubmit={() => onSubmit()} />
       </ScrollView>
     );
   }
@@ -30,7 +30,8 @@ export default class MediaModalView extends React.Component {
 MediaModalView.propTypes = {
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  fields: PropTypes.array.isRequired
+  fields: PropTypes.array.isRequired,
+  onSubmit: PropTypes.func.isRequired
 };
 
 const styles = StyleSheet.create({

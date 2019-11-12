@@ -16,10 +16,11 @@ class LearnScreen extends React.Component {
     this.props.getDidYouKnow();
     this.props.getNewsAndEvents();
     this.props.getVideos();
+    this.props.getSpeciesProfiles();
   }
 
   render() {
-    const { newContent, newsAndEvents, videos, didYouKnow } = this.props;
+    const { newContent, newsAndEvents, videos, didYouKnow, speciesProfiles } = this.props;
     return (
       <View style={{ flex: 1 }}>
         <LearnFeed
@@ -27,6 +28,7 @@ class LearnScreen extends React.Component {
           newsAndEvents={newsAndEvents}
           videos={videos}
           didYouKnow={didYouKnow}
+          speciesProfiles={speciesProfiles}
         />
       </View>
     );
@@ -36,9 +38,11 @@ class LearnScreen extends React.Component {
 LearnScreen.propTypes = {
   getNewContent: PropTypes.func.isRequired,
   getDidYouKnow: PropTypes.func.isRequired,
+  getSpeciesProfiles: PropTypes.func.isRequired,
   getNewsAndEvents: PropTypes.func.isRequired,
   getVideos: PropTypes.func.isRequired,
   newContent: PropTypes.array.isRequired,
+  speciesProfiles: PropTypes.array.isRequired,
   didYouKnow: PropTypes.object.isRequired,
   newsAndEvents: PropTypes.array.isRequired,
   videos: PropTypes.array.isRequired
@@ -58,6 +62,7 @@ function mapStateToProps(state, props) {
     newContent: state.learnScreen.newContent,
     didYouKnow: state.learnScreen.didYouKnow,
     newsAndEvents: state.learnScreen.newsAndEvents,
+    speciesProfiles: state.learnScreen.speciesProfiles,
     videos: state.learnScreen.videos
   };
 }

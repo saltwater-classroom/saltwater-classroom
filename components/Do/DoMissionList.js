@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
 import { ScrollView, FlatList, StyleSheet } from 'react-native';
 import DoMissionListItem from './DoMissionListItem';
 import ModalView from '../shared_components/ModalView';
 import DoMissionModalView from './DoMissionModalView';
 import DoMissionCompletedModalView from './DoMissionCompletedModalView';
+import * as Actions from '../../app/actions/Do/do';
 
 // These Fields will create a login form with three fields
 const fields = [
@@ -28,20 +32,24 @@ const fields = [
   }
 ];
 
-export default class DoMissionList extends React.Component {
+export class DoMissionList extends React.Component {
   constructor(props) {
     super(props);
-    const defaultItem = { name: 'name', id: '2' };
     this.state = {
       isMissionModalVisible: false,
       isMissionCompletedModalVisible: false,
-      selectedItem: defaultItem
+      view: null,
+      missionCompletedView: null,
+      selectedItem: null
     };
   }
 
   onPressMissionItem = item => {
     this.showModal(item);
+    this.props.getBadgeFromMission(item.id);
+
     this.setState({
+      view: this.createMissionModalView(item),
       selectedItem: item
     });
   };
@@ -51,12 +59,33 @@ export default class DoMissionList extends React.Component {
       isMissionModalVisible: !prevState.isMissionModalVisible
     }));
 
+    const { selectedItem } = this.state;
+
     // for some reason, ios needs this timer. Otherwise, this modal doesn't pop up :(
     setTimeout(() => {
       this.setState(prevState => ({
-        isMissionCompletedModalVisible: !prevState.isMissionCompletedModalVisible
+        isMissionCompletedModalVisible: !prevState.isMissionCompletedModalVisible,
+        missionCompletedView: this.createMissionCompletedView(selectedItem)
       }));
     }, 500);
+  };
+
+  createMissionModalView = item => {
+    return (
+      <DoMissionModalView
+        name={item.name}
+        description="this is the description"
+        fields={fields}
+        openNextModal={this.onPressMissionSubmit}
+      />
+    );
+  };
+
+  createMissionCompletedView = item => {
+    const titleMessage = `${item.name} completed!`;
+    return (
+      <DoMissionCompletedModalView title={titleMessage} updatedBadge={this.props.updatedBadge} />
+    );
   };
 
   hideMissionModal = () => {
@@ -76,20 +105,6 @@ export default class DoMissionList extends React.Component {
   showMissionCompleteModal = () => this.setState({ isMissionCompletedModalVisible: true });
 
   render() {
-    const { selectedItem } = this.state;
-
-    const doMissionModalView = (
-      <DoMissionModalView
-        name={selectedItem.name}
-        description="this is the description"
-        fields={fields}
-        openNextModal={this.onPressMissionSubmit}
-      />
-    );
-
-    const doMissionCompletedModalView = (
-      <DoMissionCompletedModalView id={selectedItem.id} name={selectedItem.name} />
-    );
     return (
       <ScrollView style={styles.container}>
         <FlatList
@@ -101,7 +116,7 @@ export default class DoMissionList extends React.Component {
         />
         {this.state.isMissionModalVisible && (
           <ModalView
-            view={doMissionModalView}
+            view={this.state.view}
             modalVisible={this.state.isMissionModalVisible}
             hideModal={this.hideMissionModal}
           />
@@ -109,7 +124,7 @@ export default class DoMissionList extends React.Component {
 
         {this.state.isMissionCompletedModalVisible && (
           <ModalView
-            view={doMissionCompletedModalView}
+            view={this.state.missionCompletedView}
             modalVisible={this.state.isMissionCompletedModalVisible}
             hideModal={this.hideMissionCompletedModal}
           />
@@ -125,7 +140,9 @@ DoMissionList.propTypes = {
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  getBadgeFromMission: PropTypes.func.isRequired,
+  updatedBadge: PropTypes.object.isRequired
 };
 
 const styles = StyleSheet.create({
@@ -134,3 +151,25 @@ const styles = StyleSheet.create({
     marginTop: 20
   }
 });
+
+// eslint-disable-next-line no-unused-vars
+function mapStateToProps(state, props) {
+  return {
+    loading: state.doScreen.loading,
+    updatedBadge: state.doScreen.updatedBadge
+  };
+}
+
+// Doing this merges our actions into the component’s props,
+// while wrapping them in dispatch() so that they immediately dispatch an Action.
+// Just by doing this, we will have access to the actions defined in out actions
+// file (action/home.js)
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(Actions, dispatch);
+}
+
+// Connect everything
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DoMissionList);

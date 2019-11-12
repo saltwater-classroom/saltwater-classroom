@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "created_by": "Ryan H.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/FL_fig04.jpg",
+    "species_name": "Manatee",
+    "scientific_name": "Trichechus",
+    "phsyical_description": "Manatees are large, full aquatic, mammals sometimes known as sea cows.",
+    "size": "Up to 13.1 feet long",
+    "fun_fact": "They continously replace their teeth throughout their lives, with old ones falling out and new ones coming in."
+  },
+  {
+    "id": "2",
+    "created_by": "Cassidy H.",
+    "image_url": "https://ocean.si.edu/sites/default/files/styles/photo_full/public/grimpo-3_med_1.jpg?itok=ZwZ02HnD",
+    "species_name": "Dumbo Octopus",
+    "scientific_name": "Grimpoteuthis",
+    "phsyical_description": "Dxwumbo octopus have ear-like fins that they use to propel through the water and steer through water currents.",
+    "size": "on average, 7.9 to 12 inches long",
+    "fun_fact": "Instead of ink sacs, dumbo octopuses take advantage of a strand-like structure on their suckers to help them sense the surrounding environment as well as looking for food."
+  }
+]

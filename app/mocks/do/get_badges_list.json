@@ -33,5 +33,19 @@
     "percent": 75,
     "inspirationalMessage": "~Spooky~",
     "goalMessage": "The tides will bow to you soon!"
+  },
+  {
+    "id": "6",
+    "name": "Animal whisperer",
+    "percent": 15,
+    "inspirationalMessage": "You're on your way to becoming the next Dr. Dolittle!",
+    "goalMessage": "The animals love that you love learning about them!"
+  },
+  {
+    "id": "7",
+    "name": "Ocean Scholar",
+    "percent": 45,
+    "inspirationalMessage": "What a smartie!",
+    "goalMessage": "You'll be an ocean scholar in no time!"
   }
 ]

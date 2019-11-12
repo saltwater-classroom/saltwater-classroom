@@ -5,7 +5,7 @@ import { Container, Header, Item, Input, Icon, Button, Text } from 'native-base'
 export default class SearchBar extends Component {
   render() {
     return (
-      <Container>
+      <Container style={styles.container}>
         <Header searchBar rounded>
           <Item>
             <Input placeholder="Search" />
@@ -20,11 +20,11 @@ export default class SearchBar extends Component {
   }
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     height: 200,
-//     backgroundColor: '#fff',
-//     borderWidth: 1,
-//     borderColor: 'black'
-//   }
-// });
+const styles = StyleSheet.create({
+  container: {
+    height: 200,
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: 'black'
+  }
+});

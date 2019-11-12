@@ -6,13 +6,15 @@ import { ScrollView, StyleSheet } from 'react-native';
 import StyledText from '../shared_components/Typography';
 import BadgeProgress from '../shared_components/BadgeProgress';
 
+const updatedBadgeMessage = 'You just got one step closer to earning the ';
+
 export default class DoMissionCompletedModalView extends React.Component {
   render() {
     const { title, updatedBadge } = this.props;
     const percentage = updatedBadge ? updatedBadge.percent : 0;
     const badgeProgressMessage = updatedBadge
-      ? `You just got one step closer to earning the ${updatedBadge.name} badge.`
-      : 'You just got one step closer to earning a badge.';
+      ? `${updatedBadgeMessage}${updatedBadge.name} badge.`
+      : `${updatedBadgeMessage}a badge.`;
 
     return (
       <ScrollView style={styles.item}>

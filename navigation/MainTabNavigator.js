@@ -5,6 +5,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import ExploreScreen from '../screens/Explore/ExploreScreen';
 import DoScreen from '../screens/Do/DoScreen';
+import LearnScreen from '../screens/Learn/LearnScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 /* eslint-disable */
@@ -23,6 +24,7 @@ const HomeStack = createStackNavigator(
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
+  header: null,
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -37,6 +39,30 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
+const LearnStack = createStackNavigator(
+  {
+    Learn: LearnScreen
+  },
+  config
+);
+
+LearnScreen.navigationOptions = {
+  header: null,
+  tabBarLabel: 'Home',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-information-circle'
+      }
+    />
+  )
+};
+
+LearnScreen.path = '';
+
 const DoStack = createStackNavigator(
   {
     Do: DoScreen
@@ -46,6 +72,7 @@ const DoStack = createStackNavigator(
 
 DoStack.navigationOptions = {
   tabBarLabel: 'Do',
+  header: null,
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -65,6 +92,7 @@ const SettingsStack = createStackNavigator(
 
 SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
+  header: null,
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -78,13 +106,15 @@ SettingsStack.path = '';
 const tabNavigator = createBottomTabNavigator(
   {
     DoStack,
+    LearnStack,
     HomeStack,
     SettingsStack
   },
   {
     tabBarOptions: {
       showLabel: true,
-      showIcon: true
+      showIcon: true,
+      header: null
     }
   }
 );

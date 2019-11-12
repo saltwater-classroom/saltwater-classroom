@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "type": "news",
+    "title": "Manatees: Facts about sea cows",
+    "url": "https://www.livescience.com/27405-manatees.html"
+  },
+  {
+    "id": "2",
+    "type": "news",
+    "title": "Incredibly Rare 1-in-50 Million Orange-and-Black Lobster Found in Maine",
+    "url": "https://www.theepochtimes.com/incredibly-rare-1-in-50-million-orange-and-black-lobster-found-in-maine_3103460.html"
+  },
+  {
+    "id": "3",
+    "type": "news",
+    "title": "Scientists Shocked By Rare, Giant Sunfish Washed Up On California Beach",
+    "url": "https://www.npr.org/2019/02/28/699004730/scientists-shocked-by-rare-giant-sunfish-washed-up-on-california-beach"
+  },
+  {
+    "id": "4",
+    "type": "video",
+    "title": "Sharks 101",
+    "url": "https://www.youtube.com/watch?v=4HGNqFdaD34"
+  }
+]

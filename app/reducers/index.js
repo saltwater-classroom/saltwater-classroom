@@ -69,7 +69,6 @@ const learnScreenReducer = (state = initialLearnScreenState, action) => {
     case GET_SPECIES_PROFILES:
       return { ...state, speciesProfiles: action.data, loading: false };
     case GET_SPECIES_PROFILE_FROM_ID:
-      console.log(`here${action}`);
       return { ...state, currentSpeciesProfile: action.data, loading: false };
     default:
       return state;

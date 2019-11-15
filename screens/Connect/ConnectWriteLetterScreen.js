@@ -13,3 +13,7 @@ export default class ConnectWriteLetterScreen extends React.Component {
     );
   }
 }
+
+ConnectWriteLetterScreen.navigationOptions = {
+  header: null
+};

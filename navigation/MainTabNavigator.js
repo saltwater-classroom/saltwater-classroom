@@ -6,7 +6,8 @@ import TabBarIcon from '../components/TabBarIcon';
 import ExploreScreen from '../screens/Explore/ExploreScreen';
 import DoScreen from '../screens/Do/DoScreen';
 import LearnScreen from '../screens/Learn/LearnScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import ConnectRecentScreen from '../screens/Connect/ConnectRecentScreen';
+import ConnectWriteLetterScreen from '../screens/Connect/ConnectWriteLetterScreen';
 
 /* eslint-disable */
 
@@ -18,6 +19,9 @@ const config = Platform.select({
 const HomeStack = createStackNavigator(
   {
     Home: ExploreScreen
+  },
+  {
+    initialRouteName: 'Home'
   },
   config
 );
@@ -42,6 +46,9 @@ HomeStack.path = '';
 const LearnStack = createStackNavigator(
   {
     Learn: LearnScreen
+  },
+  {
+    initialRouteName: 'Learn'
   },
   config
 );
@@ -83,32 +90,33 @@ DoStack.navigationOptions = {
 
 DoStack.path = '';
 
-const SettingsStack = createStackNavigator(
+const ConnectStack = createStackNavigator(
   {
-    Settings: SettingsScreen
+    ConnectWriteLetter: { screen: ConnectWriteLetterScreen },
+    ConnectRecent: { screen: ConnectRecentScreen }
   },
   config
 );
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+ConnectStack.navigationOptions = {
+  tabBarLabel: 'Connect',
   header: null,
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
     />
   )
 };
 
-SettingsStack.path = '';
+ConnectStack.path = '';
 
 const tabNavigator = createBottomTabNavigator(
   {
     DoStack,
     LearnStack,
     HomeStack,
-    SettingsStack
+    ConnectStack
   },
   {
     tabBarOptions: {

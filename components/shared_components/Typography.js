@@ -28,7 +28,7 @@ StyledText.defaultProps = {
 
 StyledText.propTypes = {
   textType: PropTypes.oneOf(['head', 'subHead', 'subHead2', 'subHead3', 'body', 'bodyBold']),
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   text: PropTypes.string,
   fontColor: PropTypes.oneOf(baseColorNames),
   numLines: PropTypes.number

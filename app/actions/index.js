@@ -1,4 +1,7 @@
 export const DATA_AVAILABLE = 'DATA_AVAILABLE';
+export const ALL_GROUPS = 'ALL_GROUPS';
+export const GET_USERS_IN_GROUP = 'GET_USERS_IN_GROUP';
+
 export const MISSION_LIST = 'MISSION_LIST';
 export const BADGES_LIST = 'BADGES_LIST';
 export const GET_BADGE_FROM_MISSION = 'GET_BADGE_FROM_MISSION';

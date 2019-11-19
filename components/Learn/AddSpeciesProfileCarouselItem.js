@@ -34,8 +34,7 @@ export class AddSpeciesProfileCarouselItem extends Component {
 
   showModal = () => this.setState({ isModalVisible: true });
 
-  showBadgeCompletedModal = data => {
-    console.log(data);
+  showBadgeCompletedModal = () => {
     this.props.getBadgeFromLearn(11);
     this.setState({
       isBadgeCompletedModalVisible: true

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet, View } from 'react-native';
 import { Text, Content } from 'native-base';
 
-import { baseColorNames, baseColors } from './Colors';
+import { baseColors } from './Colors';
 
 export default class Tag extends React.Component {
   render() {
@@ -49,8 +49,8 @@ Tag.propTypes = {
   text: PropTypes.string,
   style: PropTypes.object,
   containerStyle: PropTypes.object,
-  background: PropTypes.oneOf(baseColorNames),
-  fontColor: PropTypes.oneOf(baseColorNames),
+  background: PropTypes.oneOf(Object.keys(baseColors)),
+  fontColor: PropTypes.oneOf(Object.keys(baseColors)),
   outline: PropTypes.bool
 };
 

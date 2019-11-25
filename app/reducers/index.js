@@ -21,7 +21,6 @@ const exploreScreenReducer = (state = dataState, action) => {
 };
 
 const doScreenReducer = (state = initialDoScreenState, action) => {
-  console.log(`here${action.type}`);
   switch (action.type) {
     case MISSION_LIST:
       return { ...state, missions: action.data, loading: false };

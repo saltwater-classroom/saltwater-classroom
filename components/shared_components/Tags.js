@@ -56,13 +56,13 @@ Tag.propTypes = {
 
 const styles = StyleSheet.create({
   base: {
-    width: 100,
+    width: 'auto',
     justifyContent: 'center',
     borderRadius: 100,
     padding: 10,
     alignItems: 'center'
   },
   containerStyle: {
-    padding: 10
+    padding: 2
   }
 });

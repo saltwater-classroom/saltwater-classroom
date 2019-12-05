@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, FlatList, StyleSheet } from 'react-native';
+import { ScrollView, FlatList, StyleSheet, Dimensions } from 'react-native';
 import ProfileView from '../shared_components/ProfileView';
 import ExploreListItem from './ExploreListItem';
 import ModalView from '../shared_components/ModalView';
+
+const numColumns = 2;
+const screenWidth = Math.round(Dimensions.get('window').width);
+const itemWidth = screenWidth / numColumns;
 
 export default class ExploreList extends React.Component {
   constructor(props) {
@@ -31,9 +35,12 @@ export default class ExploreList extends React.Component {
     return (
       <ScrollView style={styles.container}>
         <FlatList
+          numColumns={numColumns}
           data={this.props.contacts}
+          columnWrapperStyle={styles.space}
           renderItem={({ item }) => (
             <ExploreListItem
+              itemWidth={itemWidth}
               name={item.name}
               bio={item.bio}
               onPressItem={() => this.onPressItem(item)}
@@ -66,7 +73,12 @@ ExploreList.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    alignContent: 'space-around'
+  },
+  space: {
+    justifyContent: 'space-around',
+    marginBottom: 20
   },
   item: {
     borderColor: '#eaa43a',

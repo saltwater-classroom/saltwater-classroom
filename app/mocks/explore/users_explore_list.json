@@ -1,32 +1,72 @@
 [
   {
-    "id": "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    "name": "Cassidy H.",
-    "bio": "Dolphins are my favorite animal!",
-    "icon": ""
+    "id": "83f01955-2064-4da1-9b7e-efd081ee037d",
+    "name": "Anika J.",
+    "groups": [1, 4],
+    "bio": "Hi, my name is ANika1\nDolphins are my favorite animal!",
+    "badges": [
+      {
+        "id": "38e836dd-877f-4c01-b40b-6081e8b66bf6",
+        "name": "Beach Bummer",
+        "percent": 40,
+        "inspirationalMessage": "You're on a roll!",
+        "goalMessage": "Keep cleaning up the beach to earn the Beach Bummer Badge!"
+      },
+      {
+        "id": "10bc9e38-372c-4b7b-b592-8b615a255be3",
+        "name": "Culinary Crustacean",
+        "percent": 100,
+        "inspirationalMessage": "Hungry? Try preparing a meal using sustainably sourced seafood!",
+        "goalMessage": "Yummy! You just cooked a sustainable meal!",
+        "TODO": "Icon idea... crab with a chef hat? Kinda lika this? https://rustwasm.github.io/wasm-pack/"
+      }
+    ],
+    "speciesProfilePreview": [
+      {
+        "id": "426b2705-890c-4121-9e28-37b08abf11b8",
+        "speciesName": "Manatee",
+        "imageThumbnailUrl": null
+      },
+      {
+        "id": "e65464ff-fa11-487e-aa03-e345147ea620",
+        "speciesName": "Seastar",
+        "imageThumbnailUrl": null
+      }
+    ]
   },
   {
-    "id": "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
+    "id": "83f01955-2064-4da1-9b7e-efd081ee037d",
     "name": "Dania A.",
-    "bio": "I love penguins!",
-    "icon": ""
-  },
-  {
-    "id": "58694a0f-3da1-471f-bd96-145571e29d72",
-    "name": "Jay A.",
-    "bio": "SBaby shark, doo doo doo doo doo doo",
-    "icon": ""
-  },
-  {
-    "id": "58694a0f-3da1-471f-bd96-145571e29d74",
-    "name": "Kincaid O.",
-    "bio": "The ocean is so big.",
-    "icon": ""
-  },
-  {
-    "id": "58694a0f-3da1-471f-bd96-145571e29d70",
-    "name": "Barrack O.",
-    "bio": "I love the environment.",
-    "icon": ""
+    "groups": [1, 2],
+    "bio": "Hi, my name is ANika1\nDolphins are my favorite animal!",
+    "badges": [
+      {
+        "id": "38e836dd-877f-4c01-b40b-6081e8b66bf6",
+        "name": "Beach Bummer",
+        "percent": 40,
+        "inspirationalMessage": "You're on a roll!",
+        "goalMessage": "Keep cleaning up the beach to earn the Beach Bummer Badge!"
+      },
+      {
+        "id": "10bc9e38-372c-4b7b-b592-8b615a255be3",
+        "name": "Culinary Crustacean",
+        "percent": 100,
+        "inspirationalMessage": "Hungry? Try preparing a meal using sustainably sourced seafood!",
+        "goalMessage": "Yummy! You just cooked a sustainable meal!",
+        "TODO": "Icon idea... crab with a chef hat? Kinda lika this? https://rustwasm.github.io/wasm-pack/"
+      }
+    ],
+    "speciesProfilePreview": [
+      {
+        "id": "426b2705-890c-4121-9e28-37b08abf11b8",
+        "speciesName": "Manatee",
+        "imageThumbnailUrl": null
+      },
+      {
+        "id": "e65464ff-fa11-487e-aa03-e345147ea620",
+        "speciesName": "Seastar",
+        "imageThumbnailUrl": null
+      }
+    ]
   }
 ]

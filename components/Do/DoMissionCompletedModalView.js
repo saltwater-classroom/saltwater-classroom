@@ -1,35 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 
 import { ScrollView, StyleSheet } from 'react-native';
-import * as Actions from '../../app/actions/Do/do';
 
 import StyledText from '../shared_components/Typography';
 import BadgeProgress from '../shared_components/BadgeProgress';
 
-export class DoMissionCompletedModalView extends React.Component {
-  componentDidMount() {
-    this.props.getBadgeFromMission(this.props.id);
-  }
+const updatedBadgeMessage = 'You just got one step closer to earning the ';
 
+export default class DoMissionCompletedModalView extends React.Component {
   render() {
-    const { name, updatedBadge } = this.props;
+    const { title, updatedBadge } = this.props;
     const percentage = updatedBadge ? updatedBadge.percent : 0;
-    const titleMessage = `${name} completed!`;
     const badgeProgressMessage = updatedBadge
-      ? `You just got one step closer to earning the ${updatedBadge.name} badge.`
-      : 'You just got one step closer to earning a badge.';
+      ? `${updatedBadgeMessage}${updatedBadge.name} badge.`
+      : `${updatedBadgeMessage}a badge.`;
 
     return (
       <ScrollView style={styles.item}>
-        <StyledText
-          textType="subHead3"
-          text={titleMessage}
-          fontColor="tidepool"
-          style={styles.spacing}
-        />
+        <StyledText textType="subHead3" text={title} fontColor="tidepool" style={styles.spacing} />
         <StyledText
           textType="body"
           text={badgeProgressMessage}
@@ -44,13 +33,11 @@ export class DoMissionCompletedModalView extends React.Component {
 }
 
 DoMissionCompletedModalView.defaultProps = {
-  updatedBadge: undefined
+  updatedBadge: { name: 'defaultName', percent: 20 }
 };
 
 DoMissionCompletedModalView.propTypes = {
-  name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  getBadgeFromMission: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
   updatedBadge: PropTypes.shape({
     name: PropTypes.string.isRequired,
     percent: PropTypes.number.isRequired
@@ -69,25 +56,3 @@ const styles = StyleSheet.create({
     paddingRight: 20
   }
 });
-
-// eslint-disable-next-line no-unused-vars
-function mapStateToProps(state, props) {
-  return {
-    loading: state.doScreen.loading,
-    updatedBadge: state.doScreen.updatedBadge
-  };
-}
-
-// Doing this merges our actions into the component’s props,
-// while wrapping them in dispatch() so that they immediately dispatch an Action.
-// Just by doing this, we will have access to the actions defined in out actions
-// file (action/home.js)
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
-}
-
-// Connect everything
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DoMissionCompletedModalView);

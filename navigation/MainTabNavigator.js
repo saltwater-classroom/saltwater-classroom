@@ -5,7 +5,9 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import ExploreScreen from '../screens/Explore/ExploreScreen';
 import DoScreen from '../screens/Do/DoScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import LearnScreen from '../screens/Learn/LearnScreen';
+import ConnectRecentScreen from '../screens/Connect/ConnectRecentScreen';
+import ConnectWriteLetterScreen from '../screens/Connect/ConnectWriteLetterScreen';
 
 /* eslint-disable */
 
@@ -18,11 +20,15 @@ const HomeStack = createStackNavigator(
   {
     Home: ExploreScreen
   },
+  {
+    initialRouteName: 'Home'
+  },
   config
 );
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
+  header: null,
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -37,6 +43,33 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
+const LearnStack = createStackNavigator(
+  {
+    Learn: LearnScreen
+  },
+  {
+    initialRouteName: 'Learn'
+  },
+  config
+);
+
+LearnScreen.navigationOptions = {
+  header: null,
+  tabBarLabel: 'Home',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-information-circle'
+      }
+    />
+  )
+};
+
+LearnScreen.path = '';
+
 const DoStack = createStackNavigator(
   {
     Do: DoScreen
@@ -46,6 +79,7 @@ const DoStack = createStackNavigator(
 
 DoStack.navigationOptions = {
   tabBarLabel: 'Do',
+  header: null,
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -56,35 +90,39 @@ DoStack.navigationOptions = {
 
 DoStack.path = '';
 
-const SettingsStack = createStackNavigator(
+const ConnectStack = createStackNavigator(
   {
-    Settings: SettingsScreen
+    ConnectWriteLetter: { screen: ConnectWriteLetterScreen },
+    ConnectRecent: { screen: ConnectRecentScreen }
   },
   config
 );
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+ConnectStack.navigationOptions = {
+  tabBarLabel: 'Connect',
+  header: null,
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
     />
   )
 };
 
-SettingsStack.path = '';
+ConnectStack.path = '';
 
 const tabNavigator = createBottomTabNavigator(
   {
     DoStack,
+    LearnStack,
     HomeStack,
-    SettingsStack
+    ConnectStack
   },
   {
     tabBarOptions: {
       showLabel: true,
-      showIcon: true
+      showIcon: true,
+      header: null
     }
   }
 );

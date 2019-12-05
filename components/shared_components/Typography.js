@@ -8,6 +8,13 @@ export default function StyledText(props) {
   const styleType = checkTextType(props.textType);
   const textColor = { color: baseColors[props.fontColor] };
 
+  if (props.numLines) {
+    return (
+      <Text style={[props.style, styleType, textColor]} numberOfLines={props.numLines}>
+        {props.text}
+      </Text>
+    );
+  }
   return <Text style={[props.style, styleType, textColor]}>{props.text}</Text>;
 }
 
@@ -15,14 +22,16 @@ StyledText.defaultProps = {
   textType: 'body',
   style: { color: 'black' },
   text: 'replace me',
-  fontColor: 'oceanFloor'
+  fontColor: 'oceanFloor',
+  numLines: undefined
 };
 
 StyledText.propTypes = {
   textType: PropTypes.oneOf(['head', 'subHead', 'subHead2', 'subHead3', 'body', 'bodyBold']),
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   text: PropTypes.string,
-  fontColor: PropTypes.oneOf(Object.keys(baseColors))
+  fontColor: PropTypes.oneOf(Object.keys(baseColors)),
+  numLines: PropTypes.number
 };
 
 // to determine what type of Text

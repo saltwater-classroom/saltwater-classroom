@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
+
+import DoBadgeMissionListItem from './DoBadgeMissionListItem';
 
 import BadgeProgress from '../shared_components/BadgeProgress';
 
@@ -28,6 +30,15 @@ export default class DoBadgeModalView extends React.Component {
           text="You can earn this badge if you:"
           fontColor="coralReef"
           style={styles.spacing}
+        />
+        <FlatList
+          data={[{ id: '1', name: 'hello' }]}
+          horizontal={false}
+          columnWrapperStyle={styles.columnWrapper}
+          renderItem={({ item }) => {
+            return <DoBadgeMissionListItem id={item.id} name="hello" />;
+          }}
+          keyExtractor={item => item.id}
         />
       </View>
     );

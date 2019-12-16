@@ -87,9 +87,11 @@ AddSpeciesProfileCarouselItem.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    height: 'auto',
+    height: 100,
     width: 'auto',
-    borderRadius: 10
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   spacing: {
     marginTop: 7

@@ -55,7 +55,7 @@ export default class LearnCarousel extends Component {
         : this.renderSpeciesProfile.bind(this);
     return (
       <View style={styles.container}>
-        <StyledText textType="subHead2" text={this.props.carouselTitle} fontColor="tidepool" />
+        <StyledText textType="subHead3" text={this.props.carouselTitle} fontColor="tidepool" />
         <Carousel
           ref={c => {
             this.carousel = c;

@@ -22,8 +22,7 @@ export class SpeciesProfileCarouselItem extends Component {
     };
   }
 
-  onPressItem = speciesProfileId => {
-    console.log(speciesProfileId);
+  onPressItem = () => {
     this.showModal();
   };
 

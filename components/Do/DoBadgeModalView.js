@@ -12,24 +12,23 @@ export default class DoBadgeModalView extends React.Component {
   };
 
   render() {
-    const { name, percent, inspirationalMessage, goalMessage } = this.props;
+    const { name, percent, goalMessage, id } = this.props;
     return (
       <View style={styles.item}>
         <StyledText textType="subHead3" text={name} fontColor="tidepool" style={styles.spacing} />
-        <StyledText
-          textType="body"
-          text={inspirationalMessage}
-          fontColor="coralReef"
-          style={styles.spacing}
-        />
+        <BadgeProgress percent={percent} size={200} radius={150} borderWidth={30} id={id} />
         <StyledText
           textType="body"
           text={goalMessage}
           fontColor="coralReef"
           style={styles.spacing}
         />
-
-        <BadgeProgress percent={percent} size={200} radius={150} borderWidth={30} />
+        <StyledText
+          textType="body"
+          text="You can earn this badge if you:"
+          fontColor="coralReef"
+          style={styles.spacing}
+        />
       </View>
     );
   }
@@ -41,8 +40,8 @@ DoBadgeModalView.defaultProps = {
 
 DoBadgeModalView.propTypes = {
   name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   percent: PropTypes.number.isRequired,
-  inspirationalMessage: PropTypes.string.isRequired,
   goalMessage: PropTypes.string.isRequired,
   onPressItem: PropTypes.func
 };
@@ -51,7 +50,8 @@ const styles = StyleSheet.create({
   item: {
     padding: 20,
     flexDirection: 'column',
-    flex: 1
+    flex: 1,
+    textAlign: 'center'
   },
   spacing: {
     marginBottom: 29

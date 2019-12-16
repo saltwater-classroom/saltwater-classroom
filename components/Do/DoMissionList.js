@@ -74,7 +74,7 @@ export class DoMissionList extends React.Component {
     return (
       <DoMissionModalView
         name={item.name}
-        description="this is the description"
+        description={item.task}
         fields={fields}
         openNextModal={this.onPressMissionSubmit}
       />
@@ -109,6 +109,8 @@ export class DoMissionList extends React.Component {
       <ScrollView style={styles.container}>
         <FlatList
           data={this.props.missions}
+          numColumns={2}
+          columnWrapperStyle={styles.columnWrapper}
           renderItem={({ item }) => (
             <DoMissionListItem name={item.name} onPressItem={() => this.onPressMissionItem(item)} />
           )}
@@ -134,21 +136,29 @@ export class DoMissionList extends React.Component {
   }
 }
 
+DoMissionList.defaultProps = {
+  updatedBadge: {}
+};
+
 DoMissionList.propTypes = {
   missions: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired
+      name: PropTypes.string.isRequired,
+      task: PropTypes.string.isRequired
     })
   ).isRequired,
   getBadgeFromMission: PropTypes.func.isRequired,
-  updatedBadge: PropTypes.object.isRequired
+  updatedBadge: PropTypes.object
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 20
+  },
+  columnWrapper: {
+    justifyContent: 'space-around'
   }
 });
 

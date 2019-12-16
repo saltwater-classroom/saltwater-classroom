@@ -9,17 +9,18 @@ import { baseColors, lightColors } from './Colors';
 
 export default class BadgeProgress extends React.Component {
   render() {
-    const { percent, size, radius, borderWidth } = this.props;
+    const { percent, size, radius, borderWidth, id } = this.props;
+    const isStarted = percent > 0;
     return (
       <View style={styles.item}>
         <ProgressCircle
           percent={percent}
           radius={radius}
           borderWidth={borderWidth}
-          color={baseColors.pencil}
-          shadowColor={lightColors.goldStarLight}
+          color={baseColors.goldStar}
+          shadowColor={lightColors.tidepoolLight}
           bgColor="#fff">
-          <BadgeIcon size={size} />
+          <BadgeIcon size={size} isInProgress={isStarted} id={id} />
         </ProgressCircle>
       </View>
     );
@@ -30,12 +31,12 @@ BadgeProgress.defaultProps = {
   size: 75,
   radius: 50,
   borderWidth: 8,
-  badgeIcon: ''
+  id: 1
 };
 
 BadgeProgress.propTypes = {
   percent: PropTypes.number.isRequired,
-  badgeIcon: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
+  id: PropTypes.string,
   size: PropTypes.number,
   radius: PropTypes.number,
   borderWidth: PropTypes.number

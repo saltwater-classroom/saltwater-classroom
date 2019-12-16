@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet, View } from 'react-native';
 
 import StyledText from '../shared_components/Typography';
-import { lightColors } from '../shared_components/Colors';
+import { baseColors } from '../shared_components/Colors';
 
 export default class LearnDidYouKnow extends Component {
   render() {
@@ -13,9 +13,9 @@ export default class LearnDidYouKnow extends Component {
           style={styles.header}
           textType="subHead3"
           text="Did you know?"
-          fontColor="tidepool"
+          fontColor="whiteSands"
         />
-        <StyledText textType="body" text={this.props.fact.fact} fontColor="pencil" />
+        <StyledText textType="body" text={this.props.fact.fact} fontColor="whiteSands" />
       </View>
     );
   }
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     padding: 7,
     margin: 14,
     borderRadius: 5,
-    backgroundColor: lightColors.smoothSailingLight
+    backgroundColor: baseColors.pencil
   },
   header: {
     marginBottom: 7

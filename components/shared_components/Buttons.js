@@ -1,23 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View } from 'react-native';
-import { Button, Text } from 'native-base';
+import { StyleSheet } from 'react-native';
+import { Button } from 'native-base';
+import StyledText from './Typography';
 
-import { baseColorNames, baseColors } from './Colors';
+import { baseColors } from './Colors';
 
 export class StyledButton extends React.Component {
   render() {
-    const { text, style, padding, background, fontColor, onPress } = this.props;
-    const paddingStyle = padding || buttonStyle.padding;
+    const { text, style, background, fontColor, onPress } = this.props;
     const buttonColor = { backgroundColor: baseColors[background] };
-    const textColor = { color: baseColors[fontColor] };
 
     return (
-      <View style={paddingStyle}>
-        <Button style={[buttonStyle.base, buttonColor, style]} onPress={onPress}>
-          <Text style={[textColor, { textAlign: 'center', alignSelf: 'center' }]}>{text}</Text>
-        </Button>
-      </View>
+      <Button style={[buttonStyle.base, buttonColor, style]} rounded small onPress={onPress}>
+        <StyledText
+          style={{ textAlign: 'center', alignSelf: 'center' }}
+          fontColor={fontColor}
+          textType="bodyBold"
+          text={text}
+        />
+      </Button>
     );
   }
 }
@@ -25,7 +27,6 @@ export class StyledButton extends React.Component {
 StyledButton.defaultProps = {
   text: 'click',
   style: undefined,
-  padding: undefined,
   background: 'tidepool',
   fontColor: 'whiteSands'
 };
@@ -33,9 +34,8 @@ StyledButton.defaultProps = {
 StyledButton.propTypes = {
   text: PropTypes.string,
   style: PropTypes.object,
-  padding: PropTypes.object,
-  background: PropTypes.oneOf(baseColorNames),
-  fontColor: PropTypes.oneOf(baseColorNames),
+  background: PropTypes.oneOf(Object.keys(baseColors)),
+  fontColor: PropTypes.oneOf(Object.keys(baseColors)),
   onPress: PropTypes.func.isRequired
 };
 
@@ -45,9 +45,7 @@ const buttonStyle = StyleSheet.create({
     alignItems: 'center',
     alignContent: 'center',
     textAlign: 'center',
-    flex: 1
-  },
-  padding: {
-    padding: 10
+    flex: 1,
+    paddingHorizontal: 16
   }
 });

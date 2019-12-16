@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, StyleSheet } from 'react-native';
 
-import { baseColorNames, baseColors } from './Colors';
+import { baseColors } from './Colors';
 
 export default function StyledText(props) {
   const styleType = checkTextType(props.textType);
@@ -30,7 +30,7 @@ StyledText.propTypes = {
   textType: PropTypes.oneOf(['head', 'subHead', 'subHead2', 'subHead3', 'body', 'bodyBold']),
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   text: PropTypes.string,
-  fontColor: PropTypes.oneOf(baseColorNames),
+  fontColor: PropTypes.oneOf(Object.keys(baseColors)),
   numLines: PropTypes.number
 };
 

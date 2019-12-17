@@ -19,17 +19,16 @@ export default class EnterEmailScreen extends Component {
           <Text>Back</Text>
         </TouchableHighlight>
         <StyledText textType="head" text={heading} fontColor="whiteSands" />
-        <View style={styles.row}>
-          <OnboardingTextInput flex={1} />
-        </View>
-        <View style={styles.row}>
-          <OnboardingTextInput flex={1} secureTextEntry />
+        <View style={styles.column}>
+          <View style={styles.row}>
+            <OnboardingTextInput flex={1} />
+          </View>
+          <View style={styles.row}>
+            <OnboardingTextInput flex={1} secureTextEntry />
+          </View>
         </View>
         <View style={styles.bottom}>
-          <OnboardingButton
-            onPress={() => this.props.navigation.navigate('CreatePasswordScreen')}
-            text="Let's Go!"
-          />
+          <OnboardingButton text="Let's Go!" />
         </View>
       </View>
     );
@@ -48,11 +47,15 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 20
   },
-  row: {
-    flex: 1,
-    flexDirection: 'row',
+  column: {
     marginTop: 20,
+    flex: 1,
+    flexDirection: 'column',
     alignItems: 'center'
+  },
+  row: {
+    flexDirection: 'row',
+    marginTop: 10
   },
   bottom: {
     flex: 1,

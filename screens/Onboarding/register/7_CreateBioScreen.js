@@ -3,7 +3,8 @@ import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import OnboardingButton from '../../../components/Onboarding/OnboardingButton';
 import OnboardingChips from '../../../components/Onboarding/OnboardingChips';
-import StyledText from '../../../components/shared_components/Typography';
+import StyledText, { textType } from '../../../components/shared_components/Typography';
+import { lightColors } from '../../../components/shared_components/Colors';
 
 const heading = "Let's build your bio!";
 const subHeading = "What's your favorite ocean activity?";
@@ -32,7 +33,10 @@ export default class CreateBioScreen extends Component {
         </TouchableOpacity>
         <StyledText textType="head" text={heading} fontColor="whiteSands" />
         <StyledText textType="subHead2" text={subHeading} fontColor="whiteSands" />
-        <OnboardingChips items={chipItems} />
+        <Text style={styles.requirementsStyle}>Choose up to 3.</Text>
+        <View style={styles.row}>
+          <OnboardingChips items={chipItems} />
+        </View>
         <View style={styles.bottom}>
           <OnboardingButton onPress={() => {}} text="Let's Go!" />
         </View>
@@ -64,5 +68,11 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     marginBottom: 20,
     alignItems: 'center'
+  },
+  requirementsStyle: {
+    color: lightColors.tidepoolLight,
+    marginTop: 10,
+    marginBottom: 10,
+    fontFamily: textType.head.fontFamily
   }
 });

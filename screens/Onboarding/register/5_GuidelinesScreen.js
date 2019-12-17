@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
+import OnboardingButton from '../../../components/Onboarding/OnboardingButton';
 import { baseColors } from '../../../components/shared_components/Colors';
 import StyledText, { textType } from '../../../components/shared_components/Typography';
 
@@ -31,21 +32,22 @@ export default class GuidelinesScreen extends Component {
         <StyledText textType="subHead2" text={subHeading} fontColor="whiteSands" />
         <View style={styles.rule}>
           <Text style={styles.ruleStyle}>{ruleOneHeading}</Text>
-          <StyledText textType="body" text={ruleOne} fontColor="oceanFloor" />
+          <StyledText textType="body" text={ruleOne} fontColor="whiteSands" />
         </View>
         <View style={styles.rule}>
           <Text style={styles.ruleStyle}>{ruleTwoHeading}</Text>
-          <StyledText textType="body" text={ruleTwo} fontColor="oceanFloor" />
+          <StyledText textType="body" text={ruleTwo} fontColor="whiteSands" />
         </View>
         <View style={styles.rule}>
           <Text style={styles.ruleStyle}>{ruleThreeHeading}</Text>
-          <StyledText textType="body" text={ruleThree} fontColor="oceanFloor" />
+          <StyledText textType="body" text={ruleThree} fontColor="whiteSands" />
         </View>
-        <TouchableOpacity
-          style={styles.bottom}
-          onPress={() => this.props.navigation.navigate('SelectAvatarScreen')}>
-          <Text style={styles.linkStyle}>I Agree</Text>
-        </TouchableOpacity>
+        <View style={styles.bottom}>
+          <OnboardingButton
+            onPress={() => this.props.navigation.navigate('SelectAvatarScreen')}
+            text="Next"
+          />
+        </View>
       </View>
     );
   }
@@ -60,24 +62,22 @@ GuidelinesScreen.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 20
+    margin: 20,
+    flex: 1
   },
   rule: {
     alignItems: 'flex-start',
     marginTop: 20
   },
-  bottom: {
-    marginTop: 50,
-    alignItems: 'center'
-  },
-  linkStyle: {
-    fontFamily: textType.bodyBold.fontFamily,
-    color: baseColors.whiteSands,
-    fontSize: textType.subHead2.fontSize
-  },
   ruleStyle: {
-    color: baseColors.oceanFloor,
+    color: baseColors.whiteSands,
     fontFamily: textType.bodyBold.fontFamily,
     fontSize: textType.subHead.fontSize
+  },
+  bottom: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    marginBottom: 30,
+    alignItems: 'center'
   }
 });

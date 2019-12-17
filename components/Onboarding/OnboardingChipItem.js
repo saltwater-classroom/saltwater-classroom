@@ -13,11 +13,9 @@ export default class OnboardingChipItem extends Component {
   }
 
   toggleSelect() {
-    if (!this.state.selected) {
-      this.setState({ selected: true });
-    } else {
-      this.setState({ selected: false });
-    }
+    this.setState(prevState => ({
+      selected: !prevState.selected
+    }));
   }
 
   render() {

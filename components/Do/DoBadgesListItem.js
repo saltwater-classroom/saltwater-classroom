@@ -13,7 +13,12 @@ export default class DoBadgesListItem extends React.Component {
     return (
       <TouchableOpacity onPress={this.onPress}>
         <View style={[styles.item, { width: this.props.width }]}>
-          <BadgeProgress percent={this.props.percent} />
+          <BadgeProgress
+            percent={this.props.percent}
+            id={this.props.id}
+            size={this.props.width - 60}
+            radius={this.props.width / 2 - 20}
+          />
         </View>
       </TouchableOpacity>
     );
@@ -26,13 +31,13 @@ DoBadgesListItem.defaultProps = {
 
 DoBadgesListItem.propTypes = {
   percent: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   onPressItem: PropTypes.func.isRequired,
   width: PropTypes.number
 };
 
 const styles = StyleSheet.create({
   item: {
-    padding: 20,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

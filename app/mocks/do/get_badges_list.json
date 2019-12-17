@@ -1,51 +1,44 @@
 [
   {
     "id": "1",
-    "name": "Beach Bummer",
+    "name": "Beach Hero",
     "percent": 20,
-    "inspirationalMessage": "You're on a roll!",
     "goalMessage": "Keep cleaning up the beach to earn the Beach Bummer Badge!"
   },
   {
     "id": "2",
-    "name": "Recycle Rager",
+    "name": "Current Surfer",
     "percent": 60,
-    "inspirationalMessage": "You're doing great!",
-    "goalMessage": "Keep on recycling and you'll be a Recycler Rager in no time!"
+    "goalMessage": "Keep up with reading ocean news articles!"
   },
   {
     "id": "3",
-    "name": "Species Pro",
+    "name": "Intertidal Ecologist",
     "percent": 26,
-    "inspirationalMessage": "You're killing it!",
-    "goalMessage": "Them animals really appreciate you profiling them!"
+    "goalMessage": "Keep learning about the intertidal zone!"
   },
   {
     "id": "4",
-    "name": "Plastic Pal",
-    "percent": 90,
-    "inspirationalMessage": "You're a plastic super star!",
-    "goalMessage": "Micro-plastics? More like Micro-tastic! That's you!"
+    "name": "Global Scientist",
+    "percent": 0,
+    "goalMessage": "Make those global connections!"
   },
   {
     "id": "5",
-    "name": "Master of the Tides",
+    "name": "Ocean Advocate",
     "percent": 75,
-    "inspirationalMessage": "~Spooky~",
-    "goalMessage": "The tides will bow to you soon!"
+    "goalMessage": "Spread awareness about the ocean and climate change."
   },
   {
     "id": "6",
-    "name": "Animal whisperer",
-    "percent": 15,
-    "inspirationalMessage": "You're on your way to becoming the next Dr. Dolittle!",
-    "goalMessage": "The animals love that you love learning about them!"
+    "name": "Plastic-Free Pioneer",
+    "percent": 0,
+    "goalMessage": "Reduce your use of plastic in your everyday life!"
   },
   {
     "id": "7",
-    "name": "Ocean Scholar",
+    "name": "Species Scholar",
     "percent": 45,
-    "inspirationalMessage": "What a smartie!",
-    "goalMessage": "You'll be an ocean scholar in no time!"
+    "goalMessage": "Learn about new species!"
   }
 ]

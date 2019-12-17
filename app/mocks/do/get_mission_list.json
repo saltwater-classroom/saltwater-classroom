@@ -1,18 +1,22 @@
 [
   {
     "id": "1",
-    "name": "Beach Clean up"
+    "name": "Beach Clean up",
+    "task": "Head to the nearest beach and clean up some marine debris.  Every action counts!  When you complete the mssion, come back here to log your efforts."
   },
   {
     "id": "2",
-    "name": "Recycle"
+    "name": "Recycle",
+    "task": "Go and recycle things like plastic bottles."
   },
   {
     "id": "3",
-    "name": "Add a Species Profile"
+    "name": "Add a Species Profile",
+    "task": "Go to the Learn section and add a species profile!"
   },
   {
     "id": "4",
-    "name": "Find microplastics"
+    "name": "Find microplastics",
+    "task": "Head to the beach and search the sand for the hidden microplastics"
   }
 ]

@@ -1,13 +1,14 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Image } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
-import TabBarIcon from '../components/TabBarIcon';
 import ExploreScreen from '../screens/Explore/ExploreScreen';
 import DoScreen from '../screens/Do/DoScreen';
 import LearnScreen from '../screens/Learn/LearnScreen';
 import ConnectRecentScreen from '../screens/Connect/ConnectRecentScreen';
 import ConnectWriteLetterScreen from '../screens/Connect/ConnectWriteLetterScreen';
+
+import { baseColors } from '../components/shared_components/Colors';
 
 /* eslint-disable */
 
@@ -29,16 +30,19 @@ const HomeStack = createStackNavigator(
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
   header: null,
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  )
+  tabBarIcon: ({ focused }) => {
+    return focused ? (
+      <Image
+        source={require('../assets/images/navIcons/community_filled.png')}
+        style={{ width: 50, height: 50 }}
+      />
+    ) : (
+      <Image
+        source={require('../assets/images/navIcons/community.png')}
+        style={{ width: 50, height: 50 }}
+      />
+    );
+  }
 };
 
 HomeStack.path = '';
@@ -47,28 +51,28 @@ const LearnStack = createStackNavigator(
   {
     Learn: LearnScreen
   },
-  {
-    initialRouteName: 'Learn'
-  },
   config
 );
 
-LearnScreen.navigationOptions = {
+LearnStack.navigationOptions = {
+  tabBarLabel: 'Do',
   header: null,
-  tabBarLabel: 'Home',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  )
+  tabBarIcon: ({ focused }) => {
+    return focused ? (
+      <Image
+        source={require('../assets/images/navIcons/learn_filled.png')}
+        style={{ width: 50, height: 50 }}
+      />
+    ) : (
+      <Image
+        source={require('../assets/images/navIcons/learn.png')}
+        style={{ width: 50, height: 50 }}
+      />
+    );
+  }
 };
 
-LearnScreen.path = '';
+LearnStack.path = '';
 
 const DoStack = createStackNavigator(
   {
@@ -80,12 +84,19 @@ const DoStack = createStackNavigator(
 DoStack.navigationOptions = {
   tabBarLabel: 'Do',
   header: null,
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
-    />
-  )
+  tabBarIcon: ({ focused }) => {
+    return focused ? (
+      <Image
+        source={require('../assets/images/navIcons/do_filled.png')}
+        style={{ width: 50, height: 50 }}
+      />
+    ) : (
+      <Image
+        source={require('../assets/images/navIcons/do.png')}
+        style={{ width: 50, height: 50 }}
+      />
+    );
+  }
 };
 
 DoStack.path = '';
@@ -101,12 +112,19 @@ const ConnectStack = createStackNavigator(
 ConnectStack.navigationOptions = {
   tabBarLabel: 'Connect',
   header: null,
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
-    />
-  )
+  tabBarIcon: ({ focused }) => {
+    return focused ? (
+      <Image
+        source={require('../assets/images/navIcons/connect_filled.png')}
+        style={{ width: 50, height: 50 }}
+      />
+    ) : (
+      <Image
+        source={require('../assets/images/navIcons/connect.png')}
+        style={{ width: 50, height: 50 }}
+      />
+    );
+  }
 };
 
 ConnectStack.path = '';
@@ -120,9 +138,12 @@ const tabNavigator = createBottomTabNavigator(
   },
   {
     tabBarOptions: {
-      showLabel: true,
+      showLabel: false,
       showIcon: true,
-      header: null
+      header: null,
+      style: {
+        backgroundColor: baseColors.whiteSands
+      }
     }
   }
 );

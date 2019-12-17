@@ -20,7 +20,7 @@ const formatData = (data, numColumns) => {
   return data;
 };
 
-const numColumns = 3;
+const numColumns = 2;
 
 export default class DoBadgesList extends React.Component {
   constructor(props) {
@@ -43,8 +43,8 @@ export default class DoBadgesList extends React.Component {
       <DoBadgeModalView
         name={item.name}
         percent={item.percent}
-        inspirationalMessage={item.inspirationalMessage}
         goalMessage={item.goalMessage}
+        id={item.id}
       />
     );
   };
@@ -60,7 +60,7 @@ export default class DoBadgesList extends React.Component {
       <ScrollView style={styles.container}>
         <FlatList
           data={formatData(this.props.badges, numColumns)}
-          numColumns={3}
+          numColumns={numColumns}
           horizontal={false}
           columnWrapperStyle={styles.columnWrapper}
           renderItem={({ item }) => {
@@ -71,6 +71,7 @@ export default class DoBadgesList extends React.Component {
             return (
               <DoBadgesListItem
                 percent={item.percent}
+                id={item.id}
                 width={screenWidth / numColumns}
                 onPressItem={() => this.onPressItem(item)}
               />
@@ -96,7 +97,6 @@ DoBadgesList.propTypes = {
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       percent: PropTypes.number.isRequired,
-      inspirationalMessage: PropTypes.string.isRequired,
       goalMessage: PropTypes.string.isRequired
     })
   ).isRequired

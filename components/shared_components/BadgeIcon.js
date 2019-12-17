@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 
 import { lightColors } from './Colors';
+import { imageSelect } from './BadgeIconGetter';
 
 /* eslint global-require: 0 */
 export default class BadgeIcon extends Component {
@@ -17,25 +18,29 @@ export default class BadgeIcon extends Component {
 
   render() {
     // eslint-disable-next-line no-unused-vars
-    const { icon, size } = this.props;
+    const { id, size, isInProgress } = this.props;
+
+    const IMAGENAME = imageSelect(id, isInProgress);
 
     // todo: replace circle with real icon
     return (
       <View style={styles.container}>
-        <View style={this.circleStyle(size)} />
+        <Image source={IMAGENAME} style={{ width: size, height: size }} />
+        {/* <View style={this.circleStyle(size)} /> */}
       </View>
     );
   }
 }
 
 BadgeIcon.defaultProps = {
-  icon: 'idk',
+  id: '1',
   size: 75
 };
 
 BadgeIcon.propTypes = {
-  icon: PropTypes.string,
-  size: PropTypes.number
+  id: PropTypes.string,
+  size: PropTypes.number,
+  isInProgress: PropTypes.bool.isRequired
 };
 
 const styles = StyleSheet.create({

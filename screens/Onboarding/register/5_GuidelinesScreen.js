@@ -26,7 +26,7 @@ export default class GuidelinesScreen extends Component {
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-          <Text>Back to Enter Code</Text>
+          <Text>Back</Text>
         </TouchableOpacity>
         <StyledText textType="head" text={heading} fontColor="whiteSands" />
         <StyledText textType="subHead2" text={subHeading} fontColor="whiteSands" />

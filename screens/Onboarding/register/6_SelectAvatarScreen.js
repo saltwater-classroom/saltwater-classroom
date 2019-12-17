@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import OnboardingButton from '../../../components/Onboarding/OnboardingButton';
 import StyledText from '../../../components/shared_components/Typography';
+import OnboardingAvatarGrid from '../../../components/Onboarding/OnboardingAvatarGrid';
 
 const user = 'User';
 const heading = `Hi ${user}!`;
@@ -10,17 +11,18 @@ const subHeading = "Let's get your profile started by choosing your favorite ani
 
 export default class SelectAvatarScreen extends Component {
   static navigationOptions = {
-    title: 'GuidelinesScreen'
+    title: 'SelectAvatarScreen'
   };
 
   render() {
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-          <Text>Back to Enter Code</Text>
+          <Text>Back</Text>
         </TouchableOpacity>
         <StyledText textType="head" text={heading} fontColor="whiteSands" />
         <StyledText textType="subHead2" text={subHeading} fontColor="whiteSands" />
+        <OnboardingAvatarGrid />
         <View style={styles.bottom}>
           <OnboardingButton
             onPress={() => this.props.navigation.navigate('CreateBioScreen')}

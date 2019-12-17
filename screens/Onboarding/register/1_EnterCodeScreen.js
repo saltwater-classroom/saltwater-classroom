@@ -22,7 +22,7 @@ export default class EnterCodeScreen extends Component {
     return (
       <View style={styles.container}>
         <TouchableHighlight onPress={() => this.props.navigation.goBack()}>
-          <Text>Back to Main Screen</Text>
+          <Text>Back</Text>
         </TouchableHighlight>
         <StyledText textType="head" text={heading} fontColor="whiteSands" />
         <StyledText textType="subHead2" text={subHeading} fontColor="whiteSands" />

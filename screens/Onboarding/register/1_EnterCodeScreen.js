@@ -13,8 +13,9 @@ export default class EnterCodeScreen extends Component {
     title: 'EnterCodeScreen'
   };
 
-  validateCode() {
-    // code validation
+  validateCode(code) {
+    return code;
+    // code validation goes here
   }
 
   render() {
@@ -26,7 +27,11 @@ export default class EnterCodeScreen extends Component {
         <StyledText textType="head" text={heading} fontColor="whiteSands" />
         <StyledText textType="subHead2" text={subHeading} fontColor="whiteSands" />
         <View style={styles.row}>
-          <OnboardingCodeInput space={5} keyboardType="numeric" onFulfill={this.validateCode()} />
+          <OnboardingCodeInput
+            space={5}
+            keyboardType="numeric"
+            onFulfill={code => this.validateCode(code)}
+          />
         </View>
         <View style={styles.bottom}>
           <OnboardingButton

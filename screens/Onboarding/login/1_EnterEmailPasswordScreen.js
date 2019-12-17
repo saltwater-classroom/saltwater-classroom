@@ -28,7 +28,7 @@ export default class EnterEmailScreen extends Component {
           </View>
         </View>
         <View style={styles.bottom}>
-          <OnboardingButton text="Let's Go!" />
+          <OnboardingButton onPress={() => {}} text="Let's Go!" />
         </View>
       </View>
     );

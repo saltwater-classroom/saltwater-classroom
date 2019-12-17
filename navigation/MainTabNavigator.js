@@ -7,7 +7,6 @@ import DoScreen from '../screens/Do/DoScreen';
 import LearnScreen from '../screens/Learn/LearnScreen';
 import ConnectRecentScreen from '../screens/Connect/ConnectRecentScreen';
 import ConnectWriteLetterScreen from '../screens/Connect/ConnectWriteLetterScreen';
-import OnboardingScreen from '../screens/Onboarding/OnboardingScreen';
 
 import { baseColors } from '../components/shared_components/Colors';
 
@@ -130,18 +129,8 @@ ConnectStack.navigationOptions = {
 
 ConnectStack.path = '';
 
-const OnboardingStack = createStackNavigator(
-  {
-    Onboarding: OnboardingScreen
-  },
-  config
-);
-
-OnboardingStack.path = '';
-
 const tabNavigator = createBottomTabNavigator(
   {
-    OnboardingStack,
     DoStack,
     LearnStack,
     HomeStack,

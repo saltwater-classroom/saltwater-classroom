@@ -17,6 +17,8 @@ import AppNavigator from './navigation/AppNavigator';
 import TopBar from './topbar/TopBar';
 import store from './app/store';
 
+import { baseColors } from './components/shared_components/Colors';
+
 /* eslint-disable */
 
 export default function App(props) {
@@ -34,7 +36,7 @@ export default function App(props) {
   return (
     <SafeAreaView style={styles.container}>
       {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-      <View style={{ flex: 1.5 }}>
+      <View style={{ flex: 1, backgroundColor: baseColors.whiteSands }}>
         <TopBar />
       </View>
       <View style={{ flex: 9 }}>

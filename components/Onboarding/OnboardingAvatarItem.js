@@ -19,12 +19,10 @@ export default class OnboardingAvatarItem extends Component {
 
   render() {
     const { source } = this.props;
+    const imageStyle = this.state.selected ? styles.selectedImage : styles.unselectedImage;
     return (
       <TouchableOpacity style={styles.imageContainer} onPress={() => this.toggleSelect()}>
-        <Image
-          style={this.state.selected ? styles.selectedImage : styles.unselectedImage}
-          source={source}
-        />
+        <Image style={imageStyle} source={source} />
       </TouchableOpacity>
     );
   }

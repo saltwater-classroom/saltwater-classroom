@@ -20,11 +20,13 @@ export default class OnboardingChipItem extends Component {
 
   render() {
     const { text } = this.props;
+    const containerStyle = this.state.selected
+      ? styles.selectedChipContainer
+      : styles.defaultChipContainer;
+    const chipStyle = this.state.selected ? styles.selectedChip : styles.defaultChip;
     return (
-      <TouchableOpacity
-        style={this.state.selected ? styles.selectedChipContainer : styles.defaultChipContainer}
-        onPress={() => this.toggleSelect()}>
-        <Text style={this.state.selected ? styles.selectedChip : styles.defaultChip}>{text}</Text>
+      <TouchableOpacity style={containerStyle} onPress={() => this.toggleSelect()}>
+        <Text style={chipStyle}>{text}</Text>
       </TouchableOpacity>
     );
   }

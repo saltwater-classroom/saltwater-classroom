@@ -1,30 +1,6 @@
-const baseColorNames = [
-  'tidepool',
-  'smoothSailing',
-  'goldStar',
-  'pencil',
-  'coralReef',
-  'whiteSands',
-  'oceanFloor'
-];
-
-const darkColorNames = [
-  'tidepoolDark',
-  'smoothSailingDark',
-  'goldStarDark',
-  'pencilDark',
-  'coralReefDark'
-];
-
-const lightColorNames = [
-  'tidepoolLight',
-  'smoothSailingLight',
-  'goldStarLight',
-  'pencilLight',
-  'coralReefLight'
-];
-
 const baseColors = {
+  black: '#000000',
+  white: '#ffffff',
   tidepool: '#43a7a8',
   smoothSailing: '#b1d6c6',
   goldStar: '#ffcf59',
@@ -50,4 +26,4 @@ const lightColors = {
   coralReefLight: '#EEAB8C'
 };
 
-export { baseColorNames, darkColorNames, lightColorNames, baseColors, darkColors, lightColors };
+export { baseColors, darkColors, lightColors };

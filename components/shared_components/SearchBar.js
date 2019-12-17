@@ -1,30 +1,34 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
-import { Container, Header, Item, Input, Icon, Button, Text } from 'native-base';
+import PropTypes from 'prop-types';
+
+import { View } from 'react-native';
+import { Item, Input, Icon } from 'native-base';
 
 export default class SearchBar extends Component {
   render() {
     return (
-      <Container style={styles.container}>
-        <Header searchBar rounded>
-          <Item>
-            <Input placeholder="Search" />
-            <Icon name="ios-search" />
-          </Item>
-          <Button transparent>
-            <Text>Search</Text>
-          </Button>
-        </Header>
-      </Container>
+      <View>
+        <Item onPress={this.props.onClose}>
+          <Input placeholder="Search" onFocus={this.props.onFocus} onBlur={this.props.onBlur} />
+          <Icon name="ios-close" />
+        </Item>
+      </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    height: 200,
-    backgroundColor: '#fff',
-    borderWidth: 1,
-    borderColor: 'black'
-  }
-});
+const defaultOnFocus = () => console.log('focus');
+const defaultOnBlur = () => console.log('blur');
+const defaultOnClose = () => console.log('close');
+
+SearchBar.defaultProps = {
+  onClose: defaultOnClose,
+  onFocus: defaultOnFocus,
+  onBlur: defaultOnBlur
+};
+
+SearchBar.propTypes = {
+  onClose: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func
+};

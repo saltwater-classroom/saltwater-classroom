@@ -21,7 +21,7 @@ export default class TopBar extends Component {
   };
 
   render() {
-    const view = <ProfileView name="Anika J." bio="Pineapples are my favorite fruit" />;
+    const view = <ProfileView userId="83f01955-2064-4da1-9b7e-efd081ee037d" />;
     return (
       <View style={styles.header}>
         <StyledText textType="head" text="saltwater classroom" fontColor="tidepool" />

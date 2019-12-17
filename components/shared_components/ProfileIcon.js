@@ -6,32 +6,30 @@ import { StyleSheet, View, Image } from 'react-native';
 export default class ProfileIcon extends Component {
   render() {
     // eslint-disable-next-line no-unused-vars
-    const { icon } = this.props;
+    const { icon, width, height } = this.props;
 
     return (
       <View style={styles.container}>
-        <Image source={require('../../assets/images/user.png')} style={{ width: 40, height: 40 }} />
+        <Image source={require('../../assets/images/user.png')} style={{ width, height }} />
       </View>
     );
   }
 }
 
 ProfileIcon.defaultProps = {
-  icon: 'idk'
+  icon: 'idk',
+  width: 40,
+  height: 40
 };
 
 ProfileIcon.propTypes = {
-  icon: PropTypes.string
+  icon: PropTypes.string,
+  width: PropTypes.number,
+  height: PropTypes.number
 };
 
 const styles = StyleSheet.create({
-  base: {
-    height: 50,
-    padding: 10
-  },
   container: {
-    padding: 10,
-    height: 62,
-    width: 62
+    alignContent: 'center'
   }
 });

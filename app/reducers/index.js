@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { DATA_AVAILABLE } from '../actions/Explore/explore'; // Import the actions types constant we defined in our actions
+import { DATA_AVAILABLE, ALL_GROUPS, GET_USERS_IN_GROUP } from '../actions/Explore/explore'; // Import the actions types constant we defined in our actions
 import { MISSION_LIST, BADGES_LIST, GET_BADGE_FROM_MISSION } from '../actions/Do/do';
 import {
   GET_NEW_CONTENT,
@@ -12,7 +12,12 @@ import {
   GET_SPECIES_PROFILE_FROM_ID
 } from '../actions/Learn/learn';
 
-const dataState = { data: [], loading: true };
+const dataState = {
+  data: [],
+  groupsList: [],
+  selectedUserGroup: [],
+  loading: true
+};
 const initialDoScreenState = {
   missions: [],
   badges: [],
@@ -35,6 +40,10 @@ const exploreScreenReducer = (state = dataState, action) => {
   switch (action.type) {
     case DATA_AVAILABLE:
       return { ...state, data: action.data, loading: false };
+    case ALL_GROUPS:
+      return { ...state, groupsList: action.data, loading: false };
+    case GET_USERS_IN_GROUP:
+      return { ...state, selectedUserGroup: action.data, loading: false };
     default:
       return state;
   }
@@ -69,7 +78,6 @@ const learnScreenReducer = (state = initialLearnScreenState, action) => {
     case GET_SPECIES_PROFILES:
       return { ...state, speciesProfiles: action.data, loading: false };
     case GET_SPECIES_PROFILE_FROM_ID:
-      console.log(`here${action}`);
       return { ...state, currentSpeciesProfile: action.data, loading: false };
     default:
       return state;

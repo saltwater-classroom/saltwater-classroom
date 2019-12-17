@@ -2,38 +2,37 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { View } from 'react-native';
+
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as Actions from '../../app/actions/Explore/explore';
+import * as Actions from '../../app/actions/Do/do';
 
-import ExploreTabs from '../../components/Explore/ExploreTabs';
+import DoTabs from '../../components/Do/DoTabs';
 
-// <Button
-//   title="Go to Details Page!"
-//   onPress={() => this.props.navigation.navigate('Links')}
-// />
-
-class ExploreScreen extends React.Component {
+class ConnectRecentScreen extends React.Component {
   componentDidMount() {
-    this.props.getUserExploreList();
+    this.props.getMissionList();
+    this.props.getBadgesList();
   }
 
   render() {
     return (
       <View style={{ flex: 1, height: 200 }}>
-        <ExploreTabs contacts={this.props.data} />
+        <DoTabs missions={this.props.missions} badges={this.props.badges} />
       </View>
     );
   }
 }
 
-ExploreScreen.propTypes = {
-  getUserExploreList: PropTypes.func.isRequired,
-  data: PropTypes.any.isRequired
+ConnectRecentScreen.propTypes = {
+  getMissionList: PropTypes.func.isRequired,
+  getBadgesList: PropTypes.func.isRequired,
+  missions: PropTypes.array.isRequired,
+  badges: PropTypes.array.isRequired
 };
 
-ExploreScreen.navigationOptions = {
+ConnectRecentScreen.navigationOptions = {
   header: null
 };
 
@@ -43,8 +42,9 @@ ExploreScreen.navigationOptions = {
 // eslint-disable-next-line no-unused-vars
 function mapStateToProps(state, props) {
   return {
-    loading: state.exploreScreen.loading,
-    data: state.exploreScreen.data
+    loading: state.doScreen.loading,
+    missions: state.doScreen.missions,
+    badges: state.doScreen.badges
   };
 }
 
@@ -60,4 +60,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ExploreScreen);
+)(ConnectRecentScreen);

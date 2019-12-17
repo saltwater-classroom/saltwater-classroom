@@ -34,8 +34,7 @@ export class AddSpeciesProfileCarouselItem extends Component {
 
   showModal = () => this.setState({ isModalVisible: true });
 
-  showBadgeCompletedModal = data => {
-    console.log(data);
+  showBadgeCompletedModal = () => {
     this.props.getBadgeFromLearn(11);
     this.setState({
       isBadgeCompletedModalVisible: true
@@ -88,9 +87,11 @@ AddSpeciesProfileCarouselItem.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    height: 'auto',
+    height: 100,
     width: 'auto',
-    borderRadius: 10
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   spacing: {
     marginTop: 7

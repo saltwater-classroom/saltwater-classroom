@@ -2,10 +2,22 @@ import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import OnboardingButton from '../../../components/Onboarding/OnboardingButton';
+import OnboardingChips from '../../../components/Onboarding/OnboardingChips';
 import StyledText from '../../../components/shared_components/Typography';
 
 const heading = "Let's build your bio!";
 const subHeading = "What's your favorite ocean activity?";
+const chipItems = [
+  'dolphin',
+  'sea turtle',
+  'sea lion',
+  'alligator',
+  'narwhal',
+  'clownfish',
+  'starfish',
+  'otter',
+  'octopus'
+];
 
 export default class CreateBioScreen extends Component {
   static navigationOptions = {
@@ -20,8 +32,9 @@ export default class CreateBioScreen extends Component {
         </TouchableOpacity>
         <StyledText textType="head" text={heading} fontColor="whiteSands" />
         <StyledText textType="subHead2" text={subHeading} fontColor="whiteSands" />
+        <OnboardingChips items={chipItems} />
         <View style={styles.bottom}>
-          <OnboardingButton onPress={() => {}} text="Done" />
+          <OnboardingButton onPress={() => {}} text="Let's Go!" />
         </View>
       </View>
     );
